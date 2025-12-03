@@ -48,8 +48,7 @@ control_unit CU (
 // Register File wires
 wire [31:0] read_data1; // Data from register rs
 wire [31:0] read_data2; // Data from register rt
-wire [31:0] write_register; // Data from rs or rt based on instruction type 
-wire [31:0] write_data ; // Data to be written to register
+wire [4:0] write_register; // Data from rs or rt based on instruction type 
 
 mux2to1_5bit rt_rd_write_reg_mux (
     .input0(rt),          // I-type instruction uses rt
@@ -108,5 +107,7 @@ alu ALU (
     .result(alu_result),            // ALU result output
     .zero(alu_zero)                 // Zero flag (not used here)
 );
+
+// assign write_data = alu_result; // if we wanna write alu result to register
 
 endmodule
