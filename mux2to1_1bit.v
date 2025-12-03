@@ -1,3 +1,7 @@
+// if select = 0 -> out = input0
+// if select = 1 -> out = input1
+
+
 module mux2to1 (
     input wire input0,   // Input 0
     input wire input1,   // Input 1
