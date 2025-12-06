@@ -21,7 +21,8 @@ reg [31:0] register [0:31]; // 32 bit X 31 times reg
 integer k;
 initial begin
 
-	for (k = 0; k < 32; k = k+1) begin
+	register[0] = 32'b0; // $zero
+	for (k = 1; k < 32; k = k+1) begin
 		register[k] = 32'b0;
 	end
 	
@@ -36,7 +37,7 @@ always@(posedge clk) begin
 end
 
 // if zero bit then return 0, else return the value of the register
-assign read_data1 = (read_reg1 == 5'b0) ? 32'b0 : registers[read_reg1];
-assign read_data2 = (read_reg2 == 5'b0) ? 32'b0 : registers[read_reg2];
+assign read_data1 = (read_reg1 == 5'b0) ? 32'b0 : register[read_reg1];
+assign read_data2 = (read_reg2 == 5'b0) ? 32'b0 : register[read_reg2];
 
 endmodule

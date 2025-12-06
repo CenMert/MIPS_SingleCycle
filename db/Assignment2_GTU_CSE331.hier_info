@@ -1,0 +1,4663 @@
+|mips_single_cycle_datapath
+clk => clk.IN1
+reset => reset.IN1
+instruction[0] => immediate[0].IN2
+instruction[1] => immediate[1].IN2
+instruction[2] => immediate[2].IN2
+instruction[3] => immediate[3].IN2
+instruction[4] => immediate[4].IN2
+instruction[5] => immediate[5].IN2
+instruction[6] => immediate[6].IN1
+instruction[7] => immediate[7].IN1
+instruction[8] => immediate[8].IN1
+instruction[9] => immediate[9].IN1
+instruction[10] => immediate[10].IN1
+instruction[11] => immediate[11].IN2
+instruction[12] => immediate[12].IN2
+instruction[13] => immediate[13].IN2
+instruction[14] => immediate[14].IN2
+instruction[15] => immediate[15].IN2
+instruction[16] => rt[0].IN2
+instruction[17] => rt[1].IN2
+instruction[18] => rt[2].IN2
+instruction[19] => rt[3].IN2
+instruction[20] => rt[4].IN2
+instruction[21] => rs[0].IN1
+instruction[22] => rs[1].IN1
+instruction[23] => rs[2].IN1
+instruction[24] => rs[3].IN1
+instruction[25] => rs[4].IN1
+instruction[26] => opcode[0].IN1
+instruction[27] => opcode[1].IN1
+instruction[28] => opcode[2].IN1
+instruction[29] => opcode[3].IN1
+instruction[30] => opcode[4].IN1
+instruction[31] => opcode[5].IN1
+alu_result[0] <= alu:ALU.result
+alu_result[1] <= alu:ALU.result
+alu_result[2] <= alu:ALU.result
+alu_result[3] <= alu:ALU.result
+alu_result[4] <= alu:ALU.result
+alu_result[5] <= alu:ALU.result
+alu_result[6] <= alu:ALU.result
+alu_result[7] <= alu:ALU.result
+alu_result[8] <= alu:ALU.result
+alu_result[9] <= alu:ALU.result
+alu_result[10] <= alu:ALU.result
+alu_result[11] <= alu:ALU.result
+alu_result[12] <= alu:ALU.result
+alu_result[13] <= alu:ALU.result
+alu_result[14] <= alu:ALU.result
+alu_result[15] <= alu:ALU.result
+alu_result[16] <= alu:ALU.result
+alu_result[17] <= alu:ALU.result
+alu_result[18] <= alu:ALU.result
+alu_result[19] <= alu:ALU.result
+alu_result[20] <= alu:ALU.result
+alu_result[21] <= alu:ALU.result
+alu_result[22] <= alu:ALU.result
+alu_result[23] <= alu:ALU.result
+alu_result[24] <= alu:ALU.result
+alu_result[25] <= alu:ALU.result
+alu_result[26] <= alu:ALU.result
+alu_result[27] <= alu:ALU.result
+alu_result[28] <= alu:ALU.result
+alu_result[29] <= alu:ALU.result
+alu_result[30] <= alu:ALU.result
+alu_result[31] <= alu:ALU.result
+write_data[0] <= register_file:RF.write_data
+write_data[1] <= register_file:RF.write_data
+write_data[2] <= register_file:RF.write_data
+write_data[3] <= register_file:RF.write_data
+write_data[4] <= register_file:RF.write_data
+write_data[5] <= register_file:RF.write_data
+write_data[6] <= register_file:RF.write_data
+write_data[7] <= register_file:RF.write_data
+write_data[8] <= register_file:RF.write_data
+write_data[9] <= register_file:RF.write_data
+write_data[10] <= register_file:RF.write_data
+write_data[11] <= register_file:RF.write_data
+write_data[12] <= register_file:RF.write_data
+write_data[13] <= register_file:RF.write_data
+write_data[14] <= register_file:RF.write_data
+write_data[15] <= register_file:RF.write_data
+write_data[16] <= register_file:RF.write_data
+write_data[17] <= register_file:RF.write_data
+write_data[18] <= register_file:RF.write_data
+write_data[19] <= register_file:RF.write_data
+write_data[20] <= register_file:RF.write_data
+write_data[21] <= register_file:RF.write_data
+write_data[22] <= register_file:RF.write_data
+write_data[23] <= register_file:RF.write_data
+write_data[24] <= register_file:RF.write_data
+write_data[25] <= register_file:RF.write_data
+write_data[26] <= register_file:RF.write_data
+write_data[27] <= register_file:RF.write_data
+write_data[28] <= register_file:RF.write_data
+write_data[29] <= register_file:RF.write_data
+write_data[30] <= register_file:RF.write_data
+write_data[31] <= register_file:RF.write_data
+
+
+|mips_single_cycle_datapath|control_unit:CU
+opcode[0] => Decoder0.IN5
+opcode[1] => Decoder0.IN4
+opcode[2] => Decoder0.IN3
+opcode[3] => Decoder0.IN2
+opcode[4] => Decoder0.IN1
+opcode[5] => Decoder0.IN0
+reg_dst <= tempRegD.DB_MAX_OUTPUT_PORT_TYPE
+alu_src <= tempAlu.DB_MAX_OUTPUT_PORT_TYPE
+reg_write <= <VCC>
+alu_op[0] <= tempAluOp[0].DB_MAX_OUTPUT_PORT_TYPE
+alu_op[1] <= tempAluOp[1].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|mux2to1_5bit:rt_rd_write_reg_mux
+in0[0] => in0[0].IN1
+in0[1] => in0[1].IN1
+in0[2] => in0[2].IN1
+in0[3] => in0[3].IN1
+in0[4] => in0[4].IN1
+in1[0] => in1[0].IN1
+in1[1] => in1[1].IN1
+in1[2] => in1[2].IN1
+in1[3] => in1[3].IN1
+in1[4] => in1[4].IN1
+sel => sel.IN5
+y[0] <= mux2to1:mux2to1_5bit[0].base_mux.out
+y[1] <= mux2to1:mux2to1_5bit[1].base_mux.out
+y[2] <= mux2to1:mux2to1_5bit[2].base_mux.out
+y[3] <= mux2to1:mux2to1_5bit[3].base_mux.out
+y[4] <= mux2to1:mux2to1_5bit[4].base_mux.out
+
+
+|mips_single_cycle_datapath|mux2to1_5bit:rt_rd_write_reg_mux|mux2to1:mux2to1_5bit[0].base_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|mux2to1_5bit:rt_rd_write_reg_mux|mux2to1:mux2to1_5bit[1].base_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|mux2to1_5bit:rt_rd_write_reg_mux|mux2to1:mux2to1_5bit[2].base_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|mux2to1_5bit:rt_rd_write_reg_mux|mux2to1:mux2to1_5bit[3].base_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|mux2to1_5bit:rt_rd_write_reg_mux|mux2to1:mux2to1_5bit[4].base_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|register_file:RF
+clk => register.we_a.CLK
+clk => register.waddr_a[4].CLK
+clk => register.waddr_a[3].CLK
+clk => register.waddr_a[2].CLK
+clk => register.waddr_a[1].CLK
+clk => register.waddr_a[0].CLK
+clk => register.data_a[31].CLK
+clk => register.data_a[30].CLK
+clk => register.data_a[29].CLK
+clk => register.data_a[28].CLK
+clk => register.data_a[27].CLK
+clk => register.data_a[26].CLK
+clk => register.data_a[25].CLK
+clk => register.data_a[24].CLK
+clk => register.data_a[23].CLK
+clk => register.data_a[22].CLK
+clk => register.data_a[21].CLK
+clk => register.data_a[20].CLK
+clk => register.data_a[19].CLK
+clk => register.data_a[18].CLK
+clk => register.data_a[17].CLK
+clk => register.data_a[16].CLK
+clk => register.data_a[15].CLK
+clk => register.data_a[14].CLK
+clk => register.data_a[13].CLK
+clk => register.data_a[12].CLK
+clk => register.data_a[11].CLK
+clk => register.data_a[10].CLK
+clk => register.data_a[9].CLK
+clk => register.data_a[8].CLK
+clk => register.data_a[7].CLK
+clk => register.data_a[6].CLK
+clk => register.data_a[5].CLK
+clk => register.data_a[4].CLK
+clk => register.data_a[3].CLK
+clk => register.data_a[2].CLK
+clk => register.data_a[1].CLK
+clk => register.data_a[0].CLK
+clk => register.CLK0
+reset => ~NO_FANOUT~
+reg_write => always0.IN1
+read_reg1[0] => Equal1.IN4
+read_reg1[0] => register.RADDR
+read_reg1[1] => Equal1.IN3
+read_reg1[1] => register.RADDR1
+read_reg1[2] => Equal1.IN2
+read_reg1[2] => register.RADDR2
+read_reg1[3] => Equal1.IN1
+read_reg1[3] => register.RADDR3
+read_reg1[4] => Equal1.IN0
+read_reg1[4] => register.RADDR4
+read_reg2[0] => Equal2.IN4
+read_reg2[0] => register.PORTBRADDR
+read_reg2[1] => Equal2.IN3
+read_reg2[1] => register.PORTBRADDR1
+read_reg2[2] => Equal2.IN2
+read_reg2[2] => register.PORTBRADDR2
+read_reg2[3] => Equal2.IN1
+read_reg2[3] => register.PORTBRADDR3
+read_reg2[4] => Equal2.IN0
+read_reg2[4] => register.PORTBRADDR4
+write_reg[0] => register.waddr_a[0].DATAIN
+write_reg[0] => Equal0.IN4
+write_reg[0] => register.WADDR
+write_reg[1] => register.waddr_a[1].DATAIN
+write_reg[1] => Equal0.IN3
+write_reg[1] => register.WADDR1
+write_reg[2] => register.waddr_a[2].DATAIN
+write_reg[2] => Equal0.IN2
+write_reg[2] => register.WADDR2
+write_reg[3] => register.waddr_a[3].DATAIN
+write_reg[3] => Equal0.IN1
+write_reg[3] => register.WADDR3
+write_reg[4] => register.waddr_a[4].DATAIN
+write_reg[4] => Equal0.IN0
+write_reg[4] => register.WADDR4
+write_data[0] => register.data_a[0].DATAIN
+write_data[0] => register.DATAIN
+write_data[1] => register.data_a[1].DATAIN
+write_data[1] => register.DATAIN1
+write_data[2] => register.data_a[2].DATAIN
+write_data[2] => register.DATAIN2
+write_data[3] => register.data_a[3].DATAIN
+write_data[3] => register.DATAIN3
+write_data[4] => register.data_a[4].DATAIN
+write_data[4] => register.DATAIN4
+write_data[5] => register.data_a[5].DATAIN
+write_data[5] => register.DATAIN5
+write_data[6] => register.data_a[6].DATAIN
+write_data[6] => register.DATAIN6
+write_data[7] => register.data_a[7].DATAIN
+write_data[7] => register.DATAIN7
+write_data[8] => register.data_a[8].DATAIN
+write_data[8] => register.DATAIN8
+write_data[9] => register.data_a[9].DATAIN
+write_data[9] => register.DATAIN9
+write_data[10] => register.data_a[10].DATAIN
+write_data[10] => register.DATAIN10
+write_data[11] => register.data_a[11].DATAIN
+write_data[11] => register.DATAIN11
+write_data[12] => register.data_a[12].DATAIN
+write_data[12] => register.DATAIN12
+write_data[13] => register.data_a[13].DATAIN
+write_data[13] => register.DATAIN13
+write_data[14] => register.data_a[14].DATAIN
+write_data[14] => register.DATAIN14
+write_data[15] => register.data_a[15].DATAIN
+write_data[15] => register.DATAIN15
+write_data[16] => register.data_a[16].DATAIN
+write_data[16] => register.DATAIN16
+write_data[17] => register.data_a[17].DATAIN
+write_data[17] => register.DATAIN17
+write_data[18] => register.data_a[18].DATAIN
+write_data[18] => register.DATAIN18
+write_data[19] => register.data_a[19].DATAIN
+write_data[19] => register.DATAIN19
+write_data[20] => register.data_a[20].DATAIN
+write_data[20] => register.DATAIN20
+write_data[21] => register.data_a[21].DATAIN
+write_data[21] => register.DATAIN21
+write_data[22] => register.data_a[22].DATAIN
+write_data[22] => register.DATAIN22
+write_data[23] => register.data_a[23].DATAIN
+write_data[23] => register.DATAIN23
+write_data[24] => register.data_a[24].DATAIN
+write_data[24] => register.DATAIN24
+write_data[25] => register.data_a[25].DATAIN
+write_data[25] => register.DATAIN25
+write_data[26] => register.data_a[26].DATAIN
+write_data[26] => register.DATAIN26
+write_data[27] => register.data_a[27].DATAIN
+write_data[27] => register.DATAIN27
+write_data[28] => register.data_a[28].DATAIN
+write_data[28] => register.DATAIN28
+write_data[29] => register.data_a[29].DATAIN
+write_data[29] => register.DATAIN29
+write_data[30] => register.data_a[30].DATAIN
+write_data[30] => register.DATAIN30
+write_data[31] => register.data_a[31].DATAIN
+write_data[31] => register.DATAIN31
+read_data1[0] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[1] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[2] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[3] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[4] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[5] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[6] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[7] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[8] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[9] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[10] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[11] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[12] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[13] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[14] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[15] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[16] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[17] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[18] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[19] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[20] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[21] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[22] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[23] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[24] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[25] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[26] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[27] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[28] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[29] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[30] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data1[31] <= read_data1.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[0] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[1] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[2] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[3] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[4] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[5] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[6] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[7] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[8] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[9] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[10] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[11] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[12] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[13] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[14] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[15] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[16] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[17] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[18] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[19] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[20] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[21] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[22] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[23] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[24] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[25] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[26] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[27] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[28] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[29] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[30] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+read_data2[31] <= read_data2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|sign_extender:SE
+immediate_in[0] => immediate_out[0].DATAIN
+immediate_in[1] => immediate_out[1].DATAIN
+immediate_in[2] => immediate_out[2].DATAIN
+immediate_in[3] => immediate_out[3].DATAIN
+immediate_in[4] => immediate_out[4].DATAIN
+immediate_in[5] => immediate_out[5].DATAIN
+immediate_in[6] => immediate_out[6].DATAIN
+immediate_in[7] => immediate_out[7].DATAIN
+immediate_in[8] => immediate_out[8].DATAIN
+immediate_in[9] => immediate_out[9].DATAIN
+immediate_in[10] => immediate_out[10].DATAIN
+immediate_in[11] => immediate_out[11].DATAIN
+immediate_in[12] => immediate_out[12].DATAIN
+immediate_in[13] => immediate_out[13].DATAIN
+immediate_in[14] => immediate_out[14].DATAIN
+immediate_in[15] => immediate_out[15].DATAIN
+immediate_out[0] <= immediate_in[0].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[1] <= immediate_in[1].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[2] <= immediate_in[2].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[3] <= immediate_in[3].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[4] <= immediate_in[4].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[5] <= immediate_in[5].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[6] <= immediate_in[6].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[7] <= immediate_in[7].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[8] <= immediate_in[8].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[9] <= immediate_in[9].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[10] <= immediate_in[10].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[11] <= immediate_in[11].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[12] <= immediate_in[12].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[13] <= immediate_in[13].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[14] <= immediate_in[14].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[15] <= immediate_in[15].DB_MAX_OUTPUT_PORT_TYPE
+immediate_out[16] <= <GND>
+immediate_out[17] <= <GND>
+immediate_out[18] <= <GND>
+immediate_out[19] <= <GND>
+immediate_out[20] <= <GND>
+immediate_out[21] <= <GND>
+immediate_out[22] <= <GND>
+immediate_out[23] <= <GND>
+immediate_out[24] <= <GND>
+immediate_out[25] <= <GND>
+immediate_out[26] <= <GND>
+immediate_out[27] <= <GND>
+immediate_out[28] <= <GND>
+immediate_out[29] <= <GND>
+immediate_out[30] <= <GND>
+immediate_out[31] <= <GND>
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux
+inputA[0] => inputA[0].IN1
+inputA[1] => inputA[1].IN1
+inputA[2] => inputA[2].IN1
+inputA[3] => inputA[3].IN1
+inputA[4] => inputA[4].IN1
+inputA[5] => inputA[5].IN1
+inputA[6] => inputA[6].IN1
+inputA[7] => inputA[7].IN1
+inputA[8] => inputA[8].IN1
+inputA[9] => inputA[9].IN1
+inputA[10] => inputA[10].IN1
+inputA[11] => inputA[11].IN1
+inputA[12] => inputA[12].IN1
+inputA[13] => inputA[13].IN1
+inputA[14] => inputA[14].IN1
+inputA[15] => inputA[15].IN1
+inputA[16] => inputA[16].IN1
+inputA[17] => inputA[17].IN1
+inputA[18] => inputA[18].IN1
+inputA[19] => inputA[19].IN1
+inputA[20] => inputA[20].IN1
+inputA[21] => inputA[21].IN1
+inputA[22] => inputA[22].IN1
+inputA[23] => inputA[23].IN1
+inputA[24] => inputA[24].IN1
+inputA[25] => inputA[25].IN1
+inputA[26] => inputA[26].IN1
+inputA[27] => inputA[27].IN1
+inputA[28] => inputA[28].IN1
+inputA[29] => inputA[29].IN1
+inputA[30] => inputA[30].IN1
+inputA[31] => inputA[31].IN1
+inputB[0] => inputB[0].IN1
+inputB[1] => inputB[1].IN1
+inputB[2] => inputB[2].IN1
+inputB[3] => inputB[3].IN1
+inputB[4] => inputB[4].IN1
+inputB[5] => inputB[5].IN1
+inputB[6] => inputB[6].IN1
+inputB[7] => inputB[7].IN1
+inputB[8] => inputB[8].IN1
+inputB[9] => inputB[9].IN1
+inputB[10] => inputB[10].IN1
+inputB[11] => inputB[11].IN1
+inputB[12] => inputB[12].IN1
+inputB[13] => inputB[13].IN1
+inputB[14] => inputB[14].IN1
+inputB[15] => inputB[15].IN1
+inputB[16] => inputB[16].IN1
+inputB[17] => inputB[17].IN1
+inputB[18] => inputB[18].IN1
+inputB[19] => inputB[19].IN1
+inputB[20] => inputB[20].IN1
+inputB[21] => inputB[21].IN1
+inputB[22] => inputB[22].IN1
+inputB[23] => inputB[23].IN1
+inputB[24] => inputB[24].IN1
+inputB[25] => inputB[25].IN1
+inputB[26] => inputB[26].IN1
+inputB[27] => inputB[27].IN1
+inputB[28] => inputB[28].IN1
+inputB[29] => inputB[29].IN1
+inputB[30] => inputB[30].IN1
+inputB[31] => inputB[31].IN1
+select => select.IN32
+outputY[0] <= mux2to1:bit_slice[0].u_mux.out
+outputY[1] <= mux2to1:bit_slice[1].u_mux.out
+outputY[2] <= mux2to1:bit_slice[2].u_mux.out
+outputY[3] <= mux2to1:bit_slice[3].u_mux.out
+outputY[4] <= mux2to1:bit_slice[4].u_mux.out
+outputY[5] <= mux2to1:bit_slice[5].u_mux.out
+outputY[6] <= mux2to1:bit_slice[6].u_mux.out
+outputY[7] <= mux2to1:bit_slice[7].u_mux.out
+outputY[8] <= mux2to1:bit_slice[8].u_mux.out
+outputY[9] <= mux2to1:bit_slice[9].u_mux.out
+outputY[10] <= mux2to1:bit_slice[10].u_mux.out
+outputY[11] <= mux2to1:bit_slice[11].u_mux.out
+outputY[12] <= mux2to1:bit_slice[12].u_mux.out
+outputY[13] <= mux2to1:bit_slice[13].u_mux.out
+outputY[14] <= mux2to1:bit_slice[14].u_mux.out
+outputY[15] <= mux2to1:bit_slice[15].u_mux.out
+outputY[16] <= mux2to1:bit_slice[16].u_mux.out
+outputY[17] <= mux2to1:bit_slice[17].u_mux.out
+outputY[18] <= mux2to1:bit_slice[18].u_mux.out
+outputY[19] <= mux2to1:bit_slice[19].u_mux.out
+outputY[20] <= mux2to1:bit_slice[20].u_mux.out
+outputY[21] <= mux2to1:bit_slice[21].u_mux.out
+outputY[22] <= mux2to1:bit_slice[22].u_mux.out
+outputY[23] <= mux2to1:bit_slice[23].u_mux.out
+outputY[24] <= mux2to1:bit_slice[24].u_mux.out
+outputY[25] <= mux2to1:bit_slice[25].u_mux.out
+outputY[26] <= mux2to1:bit_slice[26].u_mux.out
+outputY[27] <= mux2to1:bit_slice[27].u_mux.out
+outputY[28] <= mux2to1:bit_slice[28].u_mux.out
+outputY[29] <= mux2to1:bit_slice[29].u_mux.out
+outputY[30] <= mux2to1:bit_slice[30].u_mux.out
+outputY[31] <= mux2to1:bit_slice[31].u_mux.out
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[0].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[1].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[2].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[3].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[4].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[5].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[6].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[7].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[8].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[9].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[10].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[11].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[12].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[13].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[14].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[15].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[16].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[17].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[18].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[19].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[20].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[21].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[22].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[23].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[24].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[25].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[26].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[27].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[28].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[29].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[30].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|para_mux2to1:ALU_second_src_mux|mux2to1:bit_slice[31].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu_control:ALU_CTRL
+alu_op[0] => Equal0.IN1
+alu_op[0] => Equal1.IN0
+alu_op[0] => Equal2.IN1
+alu_op[1] => Equal0.IN0
+alu_op[1] => Equal1.IN1
+alu_op[1] => Equal2.IN0
+funct[0] => Decoder0.IN5
+funct[1] => Decoder0.IN4
+funct[2] => Decoder0.IN3
+funct[3] => Decoder0.IN2
+funct[4] => Decoder0.IN1
+funct[5] => Decoder0.IN0
+alu_control[0] <= alu_control_temp.DB_MAX_OUTPUT_PORT_TYPE
+alu_control[1] <= <GND>
+alu_control[2] <= <GND>
+alu_control[3] <= <GND>
+
+
+|mips_single_cycle_datapath|alu:ALU
+a[0] => a[0].IN2
+a[1] => a[1].IN2
+a[2] => a[2].IN2
+a[3] => a[3].IN2
+a[4] => a[4].IN2
+a[5] => a[5].IN2
+a[6] => a[6].IN2
+a[7] => a[7].IN2
+a[8] => a[8].IN2
+a[9] => a[9].IN2
+a[10] => a[10].IN2
+a[11] => a[11].IN2
+a[12] => a[12].IN2
+a[13] => a[13].IN2
+a[14] => a[14].IN2
+a[15] => a[15].IN2
+a[16] => a[16].IN2
+a[17] => a[17].IN2
+a[18] => a[18].IN2
+a[19] => a[19].IN2
+a[20] => a[20].IN2
+a[21] => a[21].IN2
+a[22] => a[22].IN2
+a[23] => a[23].IN2
+a[24] => a[24].IN2
+a[25] => a[25].IN2
+a[26] => a[26].IN2
+a[27] => a[27].IN2
+a[28] => a[28].IN2
+a[29] => a[29].IN2
+a[30] => a[30].IN2
+a[31] => a[31].IN2
+b[0] => b[0].IN1
+b[1] => b[1].IN1
+b[2] => b[2].IN1
+b[3] => b[3].IN1
+b[4] => b[4].IN1
+b[5] => b[5].IN1
+b[6] => b[6].IN1
+b[7] => b[7].IN1
+b[8] => b[8].IN1
+b[9] => b[9].IN1
+b[10] => b[10].IN1
+b[11] => b[11].IN1
+b[12] => b[12].IN1
+b[13] => b[13].IN1
+b[14] => b[14].IN1
+b[15] => b[15].IN1
+b[16] => b[16].IN1
+b[17] => b[17].IN1
+b[18] => b[18].IN1
+b[19] => b[19].IN1
+b[20] => b[20].IN1
+b[21] => b[21].IN1
+b[22] => b[22].IN1
+b[23] => b[23].IN1
+b[24] => b[24].IN1
+b[25] => b[25].IN1
+b[26] => b[26].IN1
+b[27] => b[27].IN1
+b[28] => b[28].IN1
+b[29] => b[29].IN1
+b[30] => b[30].IN1
+b[31] => b[31].IN1
+alu_control[0] => alu_control[0].IN4
+alu_control[1] => alu_control[1].IN2
+alu_control[2] => alu_control[2].IN1
+alu_control[3] => ~NO_FANOUT~
+result[0] <= para_mux2to1:mux_L3_FINAL.outputY
+result[1] <= para_mux2to1:mux_L3_FINAL.outputY
+result[2] <= para_mux2to1:mux_L3_FINAL.outputY
+result[3] <= para_mux2to1:mux_L3_FINAL.outputY
+result[4] <= para_mux2to1:mux_L3_FINAL.outputY
+result[5] <= para_mux2to1:mux_L3_FINAL.outputY
+result[6] <= para_mux2to1:mux_L3_FINAL.outputY
+result[7] <= para_mux2to1:mux_L3_FINAL.outputY
+result[8] <= para_mux2to1:mux_L3_FINAL.outputY
+result[9] <= para_mux2to1:mux_L3_FINAL.outputY
+result[10] <= para_mux2to1:mux_L3_FINAL.outputY
+result[11] <= para_mux2to1:mux_L3_FINAL.outputY
+result[12] <= para_mux2to1:mux_L3_FINAL.outputY
+result[13] <= para_mux2to1:mux_L3_FINAL.outputY
+result[14] <= para_mux2to1:mux_L3_FINAL.outputY
+result[15] <= para_mux2to1:mux_L3_FINAL.outputY
+result[16] <= para_mux2to1:mux_L3_FINAL.outputY
+result[17] <= para_mux2to1:mux_L3_FINAL.outputY
+result[18] <= para_mux2to1:mux_L3_FINAL.outputY
+result[19] <= para_mux2to1:mux_L3_FINAL.outputY
+result[20] <= para_mux2to1:mux_L3_FINAL.outputY
+result[21] <= para_mux2to1:mux_L3_FINAL.outputY
+result[22] <= para_mux2to1:mux_L3_FINAL.outputY
+result[23] <= para_mux2to1:mux_L3_FINAL.outputY
+result[24] <= para_mux2to1:mux_L3_FINAL.outputY
+result[25] <= para_mux2to1:mux_L3_FINAL.outputY
+result[26] <= para_mux2to1:mux_L3_FINAL.outputY
+result[27] <= para_mux2to1:mux_L3_FINAL.outputY
+result[28] <= para_mux2to1:mux_L3_FINAL.outputY
+result[29] <= para_mux2to1:mux_L3_FINAL.outputY
+result[30] <= para_mux2to1:mux_L3_FINAL.outputY
+result[31] <= para_mux2to1:mux_L3_FINAL.outputY
+zero <= <GND>
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder
+a[0] => a[0].IN1
+a[1] => a[1].IN1
+a[2] => a[2].IN1
+a[3] => a[3].IN1
+a[4] => a[4].IN1
+a[5] => a[5].IN1
+a[6] => a[6].IN1
+a[7] => a[7].IN1
+a[8] => a[8].IN1
+a[9] => a[9].IN1
+a[10] => a[10].IN1
+a[11] => a[11].IN1
+a[12] => a[12].IN1
+a[13] => a[13].IN1
+a[14] => a[14].IN1
+a[15] => a[15].IN1
+a[16] => a[16].IN1
+a[17] => a[17].IN1
+a[18] => a[18].IN1
+a[19] => a[19].IN1
+a[20] => a[20].IN1
+a[21] => a[21].IN1
+a[22] => a[22].IN1
+a[23] => a[23].IN1
+a[24] => a[24].IN1
+a[25] => a[25].IN1
+a[26] => a[26].IN1
+a[27] => a[27].IN1
+a[28] => a[28].IN1
+a[29] => a[29].IN1
+a[30] => a[30].IN1
+a[31] => a[31].IN1
+b[0] => b[0].IN1
+b[1] => b[1].IN1
+b[2] => b[2].IN1
+b[3] => b[3].IN1
+b[4] => b[4].IN1
+b[5] => b[5].IN1
+b[6] => b[6].IN1
+b[7] => b[7].IN1
+b[8] => b[8].IN1
+b[9] => b[9].IN1
+b[10] => b[10].IN1
+b[11] => b[11].IN1
+b[12] => b[12].IN1
+b[13] => b[13].IN1
+b[14] => b[14].IN1
+b[15] => b[15].IN1
+b[16] => b[16].IN1
+b[17] => b[17].IN1
+b[18] => b[18].IN1
+b[19] => b[19].IN1
+b[20] => b[20].IN1
+b[21] => b[21].IN1
+b[22] => b[22].IN1
+b[23] => b[23].IN1
+b[24] => b[24].IN1
+b[25] => b[25].IN1
+b[26] => b[26].IN1
+b[27] => b[27].IN1
+b[28] => b[28].IN1
+b[29] => b[29].IN1
+b[30] => b[30].IN1
+b[31] => b[31].IN1
+sum[0] <= full_adder:concat_full_adder[0].generate_full_adder.sum
+sum[1] <= full_adder:concat_full_adder[1].generate_full_adder.sum
+sum[2] <= full_adder:concat_full_adder[2].generate_full_adder.sum
+sum[3] <= full_adder:concat_full_adder[3].generate_full_adder.sum
+sum[4] <= full_adder:concat_full_adder[4].generate_full_adder.sum
+sum[5] <= full_adder:concat_full_adder[5].generate_full_adder.sum
+sum[6] <= full_adder:concat_full_adder[6].generate_full_adder.sum
+sum[7] <= full_adder:concat_full_adder[7].generate_full_adder.sum
+sum[8] <= full_adder:concat_full_adder[8].generate_full_adder.sum
+sum[9] <= full_adder:concat_full_adder[9].generate_full_adder.sum
+sum[10] <= full_adder:concat_full_adder[10].generate_full_adder.sum
+sum[11] <= full_adder:concat_full_adder[11].generate_full_adder.sum
+sum[12] <= full_adder:concat_full_adder[12].generate_full_adder.sum
+sum[13] <= full_adder:concat_full_adder[13].generate_full_adder.sum
+sum[14] <= full_adder:concat_full_adder[14].generate_full_adder.sum
+sum[15] <= full_adder:concat_full_adder[15].generate_full_adder.sum
+sum[16] <= full_adder:concat_full_adder[16].generate_full_adder.sum
+sum[17] <= full_adder:concat_full_adder[17].generate_full_adder.sum
+sum[18] <= full_adder:concat_full_adder[18].generate_full_adder.sum
+sum[19] <= full_adder:concat_full_adder[19].generate_full_adder.sum
+sum[20] <= full_adder:concat_full_adder[20].generate_full_adder.sum
+sum[21] <= full_adder:concat_full_adder[21].generate_full_adder.sum
+sum[22] <= full_adder:concat_full_adder[22].generate_full_adder.sum
+sum[23] <= full_adder:concat_full_adder[23].generate_full_adder.sum
+sum[24] <= full_adder:concat_full_adder[24].generate_full_adder.sum
+sum[25] <= full_adder:concat_full_adder[25].generate_full_adder.sum
+sum[26] <= full_adder:concat_full_adder[26].generate_full_adder.sum
+sum[27] <= full_adder:concat_full_adder[27].generate_full_adder.sum
+sum[28] <= full_adder:concat_full_adder[28].generate_full_adder.sum
+sum[29] <= full_adder:concat_full_adder[29].generate_full_adder.sum
+sum[30] <= full_adder:concat_full_adder[30].generate_full_adder.sum
+sum[31] <= full_adder:concat_full_adder[31].generate_full_adder.sum
+carry_out <= full_adder:concat_full_adder[31].generate_full_adder.carry_out
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[0].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[1].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[2].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[3].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[4].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[5].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[6].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[7].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[8].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[9].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[10].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[11].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[12].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[13].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[14].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[15].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[16].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[17].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[18].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[19].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[20].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[21].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[22].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[23].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[24].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[25].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[26].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[27].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[28].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[29].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[30].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[31].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit
+a[0] => a[0].IN1
+a[1] => a[1].IN1
+a[2] => a[2].IN1
+a[3] => a[3].IN1
+a[4] => a[4].IN1
+a[5] => a[5].IN1
+a[6] => a[6].IN1
+a[7] => a[7].IN1
+a[8] => a[8].IN1
+a[9] => a[9].IN1
+a[10] => a[10].IN1
+a[11] => a[11].IN1
+a[12] => a[12].IN1
+a[13] => a[13].IN1
+a[14] => a[14].IN1
+a[15] => a[15].IN1
+a[16] => a[16].IN1
+a[17] => a[17].IN1
+a[18] => a[18].IN1
+a[19] => a[19].IN1
+a[20] => a[20].IN1
+a[21] => a[21].IN1
+a[22] => a[22].IN1
+a[23] => a[23].IN1
+a[24] => a[24].IN1
+a[25] => a[25].IN1
+a[26] => a[26].IN1
+a[27] => a[27].IN1
+a[28] => a[28].IN1
+a[29] => a[29].IN1
+a[30] => a[30].IN1
+a[31] => a[31].IN1
+b[0] => b[0].IN1
+b[1] => b[1].IN1
+b[2] => b[2].IN1
+b[3] => b[3].IN1
+b[4] => b[4].IN1
+b[5] => b[5].IN1
+b[6] => b[6].IN1
+b[7] => b[7].IN1
+b[8] => b[8].IN1
+b[9] => b[9].IN1
+b[10] => b[10].IN1
+b[11] => b[11].IN1
+b[12] => b[12].IN1
+b[13] => b[13].IN1
+b[14] => b[14].IN1
+b[15] => b[15].IN1
+b[16] => b[16].IN1
+b[17] => b[17].IN1
+b[18] => b[18].IN1
+b[19] => b[19].IN1
+b[20] => b[20].IN1
+b[21] => b[21].IN1
+b[22] => b[22].IN1
+b[23] => b[23].IN1
+b[24] => b[24].IN1
+b[25] => b[25].IN1
+b[26] => b[26].IN1
+b[27] => b[27].IN1
+b[28] => b[28].IN1
+b[29] => b[29].IN1
+b[30] => b[30].IN1
+b[31] => b[31].IN1
+sum[0] <= full_adder:concat_full_adder[0].generate_full_adder.sum
+sum[1] <= full_adder:concat_full_adder[1].generate_full_adder.sum
+sum[2] <= full_adder:concat_full_adder[2].generate_full_adder.sum
+sum[3] <= full_adder:concat_full_adder[3].generate_full_adder.sum
+sum[4] <= full_adder:concat_full_adder[4].generate_full_adder.sum
+sum[5] <= full_adder:concat_full_adder[5].generate_full_adder.sum
+sum[6] <= full_adder:concat_full_adder[6].generate_full_adder.sum
+sum[7] <= full_adder:concat_full_adder[7].generate_full_adder.sum
+sum[8] <= full_adder:concat_full_adder[8].generate_full_adder.sum
+sum[9] <= full_adder:concat_full_adder[9].generate_full_adder.sum
+sum[10] <= full_adder:concat_full_adder[10].generate_full_adder.sum
+sum[11] <= full_adder:concat_full_adder[11].generate_full_adder.sum
+sum[12] <= full_adder:concat_full_adder[12].generate_full_adder.sum
+sum[13] <= full_adder:concat_full_adder[13].generate_full_adder.sum
+sum[14] <= full_adder:concat_full_adder[14].generate_full_adder.sum
+sum[15] <= full_adder:concat_full_adder[15].generate_full_adder.sum
+sum[16] <= full_adder:concat_full_adder[16].generate_full_adder.sum
+sum[17] <= full_adder:concat_full_adder[17].generate_full_adder.sum
+sum[18] <= full_adder:concat_full_adder[18].generate_full_adder.sum
+sum[19] <= full_adder:concat_full_adder[19].generate_full_adder.sum
+sum[20] <= full_adder:concat_full_adder[20].generate_full_adder.sum
+sum[21] <= full_adder:concat_full_adder[21].generate_full_adder.sum
+sum[22] <= full_adder:concat_full_adder[22].generate_full_adder.sum
+sum[23] <= full_adder:concat_full_adder[23].generate_full_adder.sum
+sum[24] <= full_adder:concat_full_adder[24].generate_full_adder.sum
+sum[25] <= full_adder:concat_full_adder[25].generate_full_adder.sum
+sum[26] <= full_adder:concat_full_adder[26].generate_full_adder.sum
+sum[27] <= full_adder:concat_full_adder[27].generate_full_adder.sum
+sum[28] <= full_adder:concat_full_adder[28].generate_full_adder.sum
+sum[29] <= full_adder:concat_full_adder[29].generate_full_adder.sum
+sum[30] <= full_adder:concat_full_adder[30].generate_full_adder.sum
+sum[31] <= full_adder:concat_full_adder[31].generate_full_adder.sum
+carry_out <= full_adder:concat_full_adder[31].generate_full_adder.carry_out
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[0].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[1].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[2].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[3].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[4].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[5].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[6].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[7].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[8].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[9].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[10].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[11].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[12].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[13].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[14].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[15].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[16].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[17].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[18].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[19].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[20].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[21].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[22].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[23].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[24].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[25].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[26].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[27].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[28].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[29].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[30].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[31].generate_full_adder
+a => sum_gate1.IN0
+a => carry_gate1.IN0
+b => sum_gate1.IN1
+b => carry_gate1.IN1
+carry_in => sum_gate2.IN1
+carry_in => carry_gate2.IN1
+sum <= sum_gate2.DB_MAX_OUTPUT_PORT_TYPE
+carry_out <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux
+inputA[0] => inputA[0].IN1
+inputA[1] => inputA[1].IN1
+inputA[2] => inputA[2].IN1
+inputA[3] => inputA[3].IN1
+inputA[4] => inputA[4].IN1
+inputA[5] => inputA[5].IN1
+inputA[6] => inputA[6].IN1
+inputA[7] => inputA[7].IN1
+inputA[8] => inputA[8].IN1
+inputA[9] => inputA[9].IN1
+inputA[10] => inputA[10].IN1
+inputA[11] => inputA[11].IN1
+inputA[12] => inputA[12].IN1
+inputA[13] => inputA[13].IN1
+inputA[14] => inputA[14].IN1
+inputA[15] => inputA[15].IN1
+inputA[16] => inputA[16].IN1
+inputA[17] => inputA[17].IN1
+inputA[18] => inputA[18].IN1
+inputA[19] => inputA[19].IN1
+inputA[20] => inputA[20].IN1
+inputA[21] => inputA[21].IN1
+inputA[22] => inputA[22].IN1
+inputA[23] => inputA[23].IN1
+inputA[24] => inputA[24].IN1
+inputA[25] => inputA[25].IN1
+inputA[26] => inputA[26].IN1
+inputA[27] => inputA[27].IN1
+inputA[28] => inputA[28].IN1
+inputA[29] => inputA[29].IN1
+inputA[30] => inputA[30].IN1
+inputA[31] => inputA[31].IN1
+inputB[0] => inputB[0].IN1
+inputB[1] => inputB[1].IN1
+inputB[2] => inputB[2].IN1
+inputB[3] => inputB[3].IN1
+inputB[4] => inputB[4].IN1
+inputB[5] => inputB[5].IN1
+inputB[6] => inputB[6].IN1
+inputB[7] => inputB[7].IN1
+inputB[8] => inputB[8].IN1
+inputB[9] => inputB[9].IN1
+inputB[10] => inputB[10].IN1
+inputB[11] => inputB[11].IN1
+inputB[12] => inputB[12].IN1
+inputB[13] => inputB[13].IN1
+inputB[14] => inputB[14].IN1
+inputB[15] => inputB[15].IN1
+inputB[16] => inputB[16].IN1
+inputB[17] => inputB[17].IN1
+inputB[18] => inputB[18].IN1
+inputB[19] => inputB[19].IN1
+inputB[20] => inputB[20].IN1
+inputB[21] => inputB[21].IN1
+inputB[22] => inputB[22].IN1
+inputB[23] => inputB[23].IN1
+inputB[24] => inputB[24].IN1
+inputB[25] => inputB[25].IN1
+inputB[26] => inputB[26].IN1
+inputB[27] => inputB[27].IN1
+inputB[28] => inputB[28].IN1
+inputB[29] => inputB[29].IN1
+inputB[30] => inputB[30].IN1
+inputB[31] => inputB[31].IN1
+select => select.IN32
+outputY[0] <= mux2to1:bit_slice[0].u_mux.out
+outputY[1] <= mux2to1:bit_slice[1].u_mux.out
+outputY[2] <= mux2to1:bit_slice[2].u_mux.out
+outputY[3] <= mux2to1:bit_slice[3].u_mux.out
+outputY[4] <= mux2to1:bit_slice[4].u_mux.out
+outputY[5] <= mux2to1:bit_slice[5].u_mux.out
+outputY[6] <= mux2to1:bit_slice[6].u_mux.out
+outputY[7] <= mux2to1:bit_slice[7].u_mux.out
+outputY[8] <= mux2to1:bit_slice[8].u_mux.out
+outputY[9] <= mux2to1:bit_slice[9].u_mux.out
+outputY[10] <= mux2to1:bit_slice[10].u_mux.out
+outputY[11] <= mux2to1:bit_slice[11].u_mux.out
+outputY[12] <= mux2to1:bit_slice[12].u_mux.out
+outputY[13] <= mux2to1:bit_slice[13].u_mux.out
+outputY[14] <= mux2to1:bit_slice[14].u_mux.out
+outputY[15] <= mux2to1:bit_slice[15].u_mux.out
+outputY[16] <= mux2to1:bit_slice[16].u_mux.out
+outputY[17] <= mux2to1:bit_slice[17].u_mux.out
+outputY[18] <= mux2to1:bit_slice[18].u_mux.out
+outputY[19] <= mux2to1:bit_slice[19].u_mux.out
+outputY[20] <= mux2to1:bit_slice[20].u_mux.out
+outputY[21] <= mux2to1:bit_slice[21].u_mux.out
+outputY[22] <= mux2to1:bit_slice[22].u_mux.out
+outputY[23] <= mux2to1:bit_slice[23].u_mux.out
+outputY[24] <= mux2to1:bit_slice[24].u_mux.out
+outputY[25] <= mux2to1:bit_slice[25].u_mux.out
+outputY[26] <= mux2to1:bit_slice[26].u_mux.out
+outputY[27] <= mux2to1:bit_slice[27].u_mux.out
+outputY[28] <= mux2to1:bit_slice[28].u_mux.out
+outputY[29] <= mux2to1:bit_slice[29].u_mux.out
+outputY[30] <= mux2to1:bit_slice[30].u_mux.out
+outputY[31] <= mux2to1:bit_slice[31].u_mux.out
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[0].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[1].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[2].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[3].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[4].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[5].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[6].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[7].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[8].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[9].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[10].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[11].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[12].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[13].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[14].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[15].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[16].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[17].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[18].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[19].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[20].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[21].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[22].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[23].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[24].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[25].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[26].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[27].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[28].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[29].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[30].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:SLT_mux|mux2to1:bit_slice[31].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0
+inputA[0] => inputA[0].IN1
+inputA[1] => inputA[1].IN1
+inputA[2] => inputA[2].IN1
+inputA[3] => inputA[3].IN1
+inputA[4] => inputA[4].IN1
+inputA[5] => inputA[5].IN1
+inputA[6] => inputA[6].IN1
+inputA[7] => inputA[7].IN1
+inputA[8] => inputA[8].IN1
+inputA[9] => inputA[9].IN1
+inputA[10] => inputA[10].IN1
+inputA[11] => inputA[11].IN1
+inputA[12] => inputA[12].IN1
+inputA[13] => inputA[13].IN1
+inputA[14] => inputA[14].IN1
+inputA[15] => inputA[15].IN1
+inputA[16] => inputA[16].IN1
+inputA[17] => inputA[17].IN1
+inputA[18] => inputA[18].IN1
+inputA[19] => inputA[19].IN1
+inputA[20] => inputA[20].IN1
+inputA[21] => inputA[21].IN1
+inputA[22] => inputA[22].IN1
+inputA[23] => inputA[23].IN1
+inputA[24] => inputA[24].IN1
+inputA[25] => inputA[25].IN1
+inputA[26] => inputA[26].IN1
+inputA[27] => inputA[27].IN1
+inputA[28] => inputA[28].IN1
+inputA[29] => inputA[29].IN1
+inputA[30] => inputA[30].IN1
+inputA[31] => inputA[31].IN1
+inputB[0] => inputB[0].IN1
+inputB[1] => inputB[1].IN1
+inputB[2] => inputB[2].IN1
+inputB[3] => inputB[3].IN1
+inputB[4] => inputB[4].IN1
+inputB[5] => inputB[5].IN1
+inputB[6] => inputB[6].IN1
+inputB[7] => inputB[7].IN1
+inputB[8] => inputB[8].IN1
+inputB[9] => inputB[9].IN1
+inputB[10] => inputB[10].IN1
+inputB[11] => inputB[11].IN1
+inputB[12] => inputB[12].IN1
+inputB[13] => inputB[13].IN1
+inputB[14] => inputB[14].IN1
+inputB[15] => inputB[15].IN1
+inputB[16] => inputB[16].IN1
+inputB[17] => inputB[17].IN1
+inputB[18] => inputB[18].IN1
+inputB[19] => inputB[19].IN1
+inputB[20] => inputB[20].IN1
+inputB[21] => inputB[21].IN1
+inputB[22] => inputB[22].IN1
+inputB[23] => inputB[23].IN1
+inputB[24] => inputB[24].IN1
+inputB[25] => inputB[25].IN1
+inputB[26] => inputB[26].IN1
+inputB[27] => inputB[27].IN1
+inputB[28] => inputB[28].IN1
+inputB[29] => inputB[29].IN1
+inputB[30] => inputB[30].IN1
+inputB[31] => inputB[31].IN1
+select => select.IN32
+outputY[0] <= mux2to1:bit_slice[0].u_mux.out
+outputY[1] <= mux2to1:bit_slice[1].u_mux.out
+outputY[2] <= mux2to1:bit_slice[2].u_mux.out
+outputY[3] <= mux2to1:bit_slice[3].u_mux.out
+outputY[4] <= mux2to1:bit_slice[4].u_mux.out
+outputY[5] <= mux2to1:bit_slice[5].u_mux.out
+outputY[6] <= mux2to1:bit_slice[6].u_mux.out
+outputY[7] <= mux2to1:bit_slice[7].u_mux.out
+outputY[8] <= mux2to1:bit_slice[8].u_mux.out
+outputY[9] <= mux2to1:bit_slice[9].u_mux.out
+outputY[10] <= mux2to1:bit_slice[10].u_mux.out
+outputY[11] <= mux2to1:bit_slice[11].u_mux.out
+outputY[12] <= mux2to1:bit_slice[12].u_mux.out
+outputY[13] <= mux2to1:bit_slice[13].u_mux.out
+outputY[14] <= mux2to1:bit_slice[14].u_mux.out
+outputY[15] <= mux2to1:bit_slice[15].u_mux.out
+outputY[16] <= mux2to1:bit_slice[16].u_mux.out
+outputY[17] <= mux2to1:bit_slice[17].u_mux.out
+outputY[18] <= mux2to1:bit_slice[18].u_mux.out
+outputY[19] <= mux2to1:bit_slice[19].u_mux.out
+outputY[20] <= mux2to1:bit_slice[20].u_mux.out
+outputY[21] <= mux2to1:bit_slice[21].u_mux.out
+outputY[22] <= mux2to1:bit_slice[22].u_mux.out
+outputY[23] <= mux2to1:bit_slice[23].u_mux.out
+outputY[24] <= mux2to1:bit_slice[24].u_mux.out
+outputY[25] <= mux2to1:bit_slice[25].u_mux.out
+outputY[26] <= mux2to1:bit_slice[26].u_mux.out
+outputY[27] <= mux2to1:bit_slice[27].u_mux.out
+outputY[28] <= mux2to1:bit_slice[28].u_mux.out
+outputY[29] <= mux2to1:bit_slice[29].u_mux.out
+outputY[30] <= mux2to1:bit_slice[30].u_mux.out
+outputY[31] <= mux2to1:bit_slice[31].u_mux.out
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[0].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[1].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[2].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[3].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[4].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[5].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[6].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[7].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[8].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[9].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[10].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[11].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[12].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[13].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[14].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[15].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[16].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[17].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[18].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[19].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[20].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[21].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[22].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[23].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[24].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[25].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[26].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[27].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[28].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[29].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[30].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[31].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1
+inputA[0] => inputA[0].IN1
+inputA[1] => inputA[1].IN1
+inputA[2] => inputA[2].IN1
+inputA[3] => inputA[3].IN1
+inputA[4] => inputA[4].IN1
+inputA[5] => inputA[5].IN1
+inputA[6] => inputA[6].IN1
+inputA[7] => inputA[7].IN1
+inputA[8] => inputA[8].IN1
+inputA[9] => inputA[9].IN1
+inputA[10] => inputA[10].IN1
+inputA[11] => inputA[11].IN1
+inputA[12] => inputA[12].IN1
+inputA[13] => inputA[13].IN1
+inputA[14] => inputA[14].IN1
+inputA[15] => inputA[15].IN1
+inputA[16] => inputA[16].IN1
+inputA[17] => inputA[17].IN1
+inputA[18] => inputA[18].IN1
+inputA[19] => inputA[19].IN1
+inputA[20] => inputA[20].IN1
+inputA[21] => inputA[21].IN1
+inputA[22] => inputA[22].IN1
+inputA[23] => inputA[23].IN1
+inputA[24] => inputA[24].IN1
+inputA[25] => inputA[25].IN1
+inputA[26] => inputA[26].IN1
+inputA[27] => inputA[27].IN1
+inputA[28] => inputA[28].IN1
+inputA[29] => inputA[29].IN1
+inputA[30] => inputA[30].IN1
+inputA[31] => inputA[31].IN1
+inputB[0] => inputB[0].IN1
+inputB[1] => inputB[1].IN1
+inputB[2] => inputB[2].IN1
+inputB[3] => inputB[3].IN1
+inputB[4] => inputB[4].IN1
+inputB[5] => inputB[5].IN1
+inputB[6] => inputB[6].IN1
+inputB[7] => inputB[7].IN1
+inputB[8] => inputB[8].IN1
+inputB[9] => inputB[9].IN1
+inputB[10] => inputB[10].IN1
+inputB[11] => inputB[11].IN1
+inputB[12] => inputB[12].IN1
+inputB[13] => inputB[13].IN1
+inputB[14] => inputB[14].IN1
+inputB[15] => inputB[15].IN1
+inputB[16] => inputB[16].IN1
+inputB[17] => inputB[17].IN1
+inputB[18] => inputB[18].IN1
+inputB[19] => inputB[19].IN1
+inputB[20] => inputB[20].IN1
+inputB[21] => inputB[21].IN1
+inputB[22] => inputB[22].IN1
+inputB[23] => inputB[23].IN1
+inputB[24] => inputB[24].IN1
+inputB[25] => inputB[25].IN1
+inputB[26] => inputB[26].IN1
+inputB[27] => inputB[27].IN1
+inputB[28] => inputB[28].IN1
+inputB[29] => inputB[29].IN1
+inputB[30] => inputB[30].IN1
+inputB[31] => inputB[31].IN1
+select => select.IN32
+outputY[0] <= mux2to1:bit_slice[0].u_mux.out
+outputY[1] <= mux2to1:bit_slice[1].u_mux.out
+outputY[2] <= mux2to1:bit_slice[2].u_mux.out
+outputY[3] <= mux2to1:bit_slice[3].u_mux.out
+outputY[4] <= mux2to1:bit_slice[4].u_mux.out
+outputY[5] <= mux2to1:bit_slice[5].u_mux.out
+outputY[6] <= mux2to1:bit_slice[6].u_mux.out
+outputY[7] <= mux2to1:bit_slice[7].u_mux.out
+outputY[8] <= mux2to1:bit_slice[8].u_mux.out
+outputY[9] <= mux2to1:bit_slice[9].u_mux.out
+outputY[10] <= mux2to1:bit_slice[10].u_mux.out
+outputY[11] <= mux2to1:bit_slice[11].u_mux.out
+outputY[12] <= mux2to1:bit_slice[12].u_mux.out
+outputY[13] <= mux2to1:bit_slice[13].u_mux.out
+outputY[14] <= mux2to1:bit_slice[14].u_mux.out
+outputY[15] <= mux2to1:bit_slice[15].u_mux.out
+outputY[16] <= mux2to1:bit_slice[16].u_mux.out
+outputY[17] <= mux2to1:bit_slice[17].u_mux.out
+outputY[18] <= mux2to1:bit_slice[18].u_mux.out
+outputY[19] <= mux2to1:bit_slice[19].u_mux.out
+outputY[20] <= mux2to1:bit_slice[20].u_mux.out
+outputY[21] <= mux2to1:bit_slice[21].u_mux.out
+outputY[22] <= mux2to1:bit_slice[22].u_mux.out
+outputY[23] <= mux2to1:bit_slice[23].u_mux.out
+outputY[24] <= mux2to1:bit_slice[24].u_mux.out
+outputY[25] <= mux2to1:bit_slice[25].u_mux.out
+outputY[26] <= mux2to1:bit_slice[26].u_mux.out
+outputY[27] <= mux2to1:bit_slice[27].u_mux.out
+outputY[28] <= mux2to1:bit_slice[28].u_mux.out
+outputY[29] <= mux2to1:bit_slice[29].u_mux.out
+outputY[30] <= mux2to1:bit_slice[30].u_mux.out
+outputY[31] <= mux2to1:bit_slice[31].u_mux.out
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[0].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[1].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[2].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[3].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[4].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[5].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[6].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[7].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[8].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[9].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[10].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[11].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[12].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[13].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[14].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[15].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[16].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[17].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[18].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[19].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[20].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[21].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[22].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[23].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[24].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[25].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[26].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[27].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[28].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[29].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[30].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_1|mux2to1:bit_slice[31].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2
+inputA[0] => inputA[0].IN1
+inputA[1] => inputA[1].IN1
+inputA[2] => inputA[2].IN1
+inputA[3] => inputA[3].IN1
+inputA[4] => inputA[4].IN1
+inputA[5] => inputA[5].IN1
+inputA[6] => inputA[6].IN1
+inputA[7] => inputA[7].IN1
+inputA[8] => inputA[8].IN1
+inputA[9] => inputA[9].IN1
+inputA[10] => inputA[10].IN1
+inputA[11] => inputA[11].IN1
+inputA[12] => inputA[12].IN1
+inputA[13] => inputA[13].IN1
+inputA[14] => inputA[14].IN1
+inputA[15] => inputA[15].IN1
+inputA[16] => inputA[16].IN1
+inputA[17] => inputA[17].IN1
+inputA[18] => inputA[18].IN1
+inputA[19] => inputA[19].IN1
+inputA[20] => inputA[20].IN1
+inputA[21] => inputA[21].IN1
+inputA[22] => inputA[22].IN1
+inputA[23] => inputA[23].IN1
+inputA[24] => inputA[24].IN1
+inputA[25] => inputA[25].IN1
+inputA[26] => inputA[26].IN1
+inputA[27] => inputA[27].IN1
+inputA[28] => inputA[28].IN1
+inputA[29] => inputA[29].IN1
+inputA[30] => inputA[30].IN1
+inputA[31] => inputA[31].IN1
+inputB[0] => inputB[0].IN1
+inputB[1] => inputB[1].IN1
+inputB[2] => inputB[2].IN1
+inputB[3] => inputB[3].IN1
+inputB[4] => inputB[4].IN1
+inputB[5] => inputB[5].IN1
+inputB[6] => inputB[6].IN1
+inputB[7] => inputB[7].IN1
+inputB[8] => inputB[8].IN1
+inputB[9] => inputB[9].IN1
+inputB[10] => inputB[10].IN1
+inputB[11] => inputB[11].IN1
+inputB[12] => inputB[12].IN1
+inputB[13] => inputB[13].IN1
+inputB[14] => inputB[14].IN1
+inputB[15] => inputB[15].IN1
+inputB[16] => inputB[16].IN1
+inputB[17] => inputB[17].IN1
+inputB[18] => inputB[18].IN1
+inputB[19] => inputB[19].IN1
+inputB[20] => inputB[20].IN1
+inputB[21] => inputB[21].IN1
+inputB[22] => inputB[22].IN1
+inputB[23] => inputB[23].IN1
+inputB[24] => inputB[24].IN1
+inputB[25] => inputB[25].IN1
+inputB[26] => inputB[26].IN1
+inputB[27] => inputB[27].IN1
+inputB[28] => inputB[28].IN1
+inputB[29] => inputB[29].IN1
+inputB[30] => inputB[30].IN1
+inputB[31] => inputB[31].IN1
+select => select.IN32
+outputY[0] <= mux2to1:bit_slice[0].u_mux.out
+outputY[1] <= mux2to1:bit_slice[1].u_mux.out
+outputY[2] <= mux2to1:bit_slice[2].u_mux.out
+outputY[3] <= mux2to1:bit_slice[3].u_mux.out
+outputY[4] <= mux2to1:bit_slice[4].u_mux.out
+outputY[5] <= mux2to1:bit_slice[5].u_mux.out
+outputY[6] <= mux2to1:bit_slice[6].u_mux.out
+outputY[7] <= mux2to1:bit_slice[7].u_mux.out
+outputY[8] <= mux2to1:bit_slice[8].u_mux.out
+outputY[9] <= mux2to1:bit_slice[9].u_mux.out
+outputY[10] <= mux2to1:bit_slice[10].u_mux.out
+outputY[11] <= mux2to1:bit_slice[11].u_mux.out
+outputY[12] <= mux2to1:bit_slice[12].u_mux.out
+outputY[13] <= mux2to1:bit_slice[13].u_mux.out
+outputY[14] <= mux2to1:bit_slice[14].u_mux.out
+outputY[15] <= mux2to1:bit_slice[15].u_mux.out
+outputY[16] <= mux2to1:bit_slice[16].u_mux.out
+outputY[17] <= mux2to1:bit_slice[17].u_mux.out
+outputY[18] <= mux2to1:bit_slice[18].u_mux.out
+outputY[19] <= mux2to1:bit_slice[19].u_mux.out
+outputY[20] <= mux2to1:bit_slice[20].u_mux.out
+outputY[21] <= mux2to1:bit_slice[21].u_mux.out
+outputY[22] <= mux2to1:bit_slice[22].u_mux.out
+outputY[23] <= mux2to1:bit_slice[23].u_mux.out
+outputY[24] <= mux2to1:bit_slice[24].u_mux.out
+outputY[25] <= mux2to1:bit_slice[25].u_mux.out
+outputY[26] <= mux2to1:bit_slice[26].u_mux.out
+outputY[27] <= mux2to1:bit_slice[27].u_mux.out
+outputY[28] <= mux2to1:bit_slice[28].u_mux.out
+outputY[29] <= mux2to1:bit_slice[29].u_mux.out
+outputY[30] <= mux2to1:bit_slice[30].u_mux.out
+outputY[31] <= mux2to1:bit_slice[31].u_mux.out
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[0].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[1].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[2].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[3].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[4].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[5].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[6].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[7].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[8].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[9].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[10].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[11].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[12].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[13].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[14].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[15].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[16].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[17].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[18].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[19].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[20].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[21].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[22].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[23].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[24].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[25].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[26].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[27].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[28].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[29].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[30].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_2|mux2to1:bit_slice[31].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3
+inputA[0] => inputA[0].IN1
+inputA[1] => inputA[1].IN1
+inputA[2] => inputA[2].IN1
+inputA[3] => inputA[3].IN1
+inputA[4] => inputA[4].IN1
+inputA[5] => inputA[5].IN1
+inputA[6] => inputA[6].IN1
+inputA[7] => inputA[7].IN1
+inputA[8] => inputA[8].IN1
+inputA[9] => inputA[9].IN1
+inputA[10] => inputA[10].IN1
+inputA[11] => inputA[11].IN1
+inputA[12] => inputA[12].IN1
+inputA[13] => inputA[13].IN1
+inputA[14] => inputA[14].IN1
+inputA[15] => inputA[15].IN1
+inputA[16] => inputA[16].IN1
+inputA[17] => inputA[17].IN1
+inputA[18] => inputA[18].IN1
+inputA[19] => inputA[19].IN1
+inputA[20] => inputA[20].IN1
+inputA[21] => inputA[21].IN1
+inputA[22] => inputA[22].IN1
+inputA[23] => inputA[23].IN1
+inputA[24] => inputA[24].IN1
+inputA[25] => inputA[25].IN1
+inputA[26] => inputA[26].IN1
+inputA[27] => inputA[27].IN1
+inputA[28] => inputA[28].IN1
+inputA[29] => inputA[29].IN1
+inputA[30] => inputA[30].IN1
+inputA[31] => inputA[31].IN1
+inputB[0] => inputB[0].IN1
+inputB[1] => inputB[1].IN1
+inputB[2] => inputB[2].IN1
+inputB[3] => inputB[3].IN1
+inputB[4] => inputB[4].IN1
+inputB[5] => inputB[5].IN1
+inputB[6] => inputB[6].IN1
+inputB[7] => inputB[7].IN1
+inputB[8] => inputB[8].IN1
+inputB[9] => inputB[9].IN1
+inputB[10] => inputB[10].IN1
+inputB[11] => inputB[11].IN1
+inputB[12] => inputB[12].IN1
+inputB[13] => inputB[13].IN1
+inputB[14] => inputB[14].IN1
+inputB[15] => inputB[15].IN1
+inputB[16] => inputB[16].IN1
+inputB[17] => inputB[17].IN1
+inputB[18] => inputB[18].IN1
+inputB[19] => inputB[19].IN1
+inputB[20] => inputB[20].IN1
+inputB[21] => inputB[21].IN1
+inputB[22] => inputB[22].IN1
+inputB[23] => inputB[23].IN1
+inputB[24] => inputB[24].IN1
+inputB[25] => inputB[25].IN1
+inputB[26] => inputB[26].IN1
+inputB[27] => inputB[27].IN1
+inputB[28] => inputB[28].IN1
+inputB[29] => inputB[29].IN1
+inputB[30] => inputB[30].IN1
+inputB[31] => inputB[31].IN1
+select => select.IN32
+outputY[0] <= mux2to1:bit_slice[0].u_mux.out
+outputY[1] <= mux2to1:bit_slice[1].u_mux.out
+outputY[2] <= mux2to1:bit_slice[2].u_mux.out
+outputY[3] <= mux2to1:bit_slice[3].u_mux.out
+outputY[4] <= mux2to1:bit_slice[4].u_mux.out
+outputY[5] <= mux2to1:bit_slice[5].u_mux.out
+outputY[6] <= mux2to1:bit_slice[6].u_mux.out
+outputY[7] <= mux2to1:bit_slice[7].u_mux.out
+outputY[8] <= mux2to1:bit_slice[8].u_mux.out
+outputY[9] <= mux2to1:bit_slice[9].u_mux.out
+outputY[10] <= mux2to1:bit_slice[10].u_mux.out
+outputY[11] <= mux2to1:bit_slice[11].u_mux.out
+outputY[12] <= mux2to1:bit_slice[12].u_mux.out
+outputY[13] <= mux2to1:bit_slice[13].u_mux.out
+outputY[14] <= mux2to1:bit_slice[14].u_mux.out
+outputY[15] <= mux2to1:bit_slice[15].u_mux.out
+outputY[16] <= mux2to1:bit_slice[16].u_mux.out
+outputY[17] <= mux2to1:bit_slice[17].u_mux.out
+outputY[18] <= mux2to1:bit_slice[18].u_mux.out
+outputY[19] <= mux2to1:bit_slice[19].u_mux.out
+outputY[20] <= mux2to1:bit_slice[20].u_mux.out
+outputY[21] <= mux2to1:bit_slice[21].u_mux.out
+outputY[22] <= mux2to1:bit_slice[22].u_mux.out
+outputY[23] <= mux2to1:bit_slice[23].u_mux.out
+outputY[24] <= mux2to1:bit_slice[24].u_mux.out
+outputY[25] <= mux2to1:bit_slice[25].u_mux.out
+outputY[26] <= mux2to1:bit_slice[26].u_mux.out
+outputY[27] <= mux2to1:bit_slice[27].u_mux.out
+outputY[28] <= mux2to1:bit_slice[28].u_mux.out
+outputY[29] <= mux2to1:bit_slice[29].u_mux.out
+outputY[30] <= mux2to1:bit_slice[30].u_mux.out
+outputY[31] <= mux2to1:bit_slice[31].u_mux.out
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[0].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[1].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[2].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[3].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[4].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[5].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[6].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[7].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[8].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[9].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[10].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[11].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[12].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[13].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[14].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[15].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[16].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[17].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[18].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[19].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[20].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[21].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[22].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[23].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[24].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[25].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[26].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[27].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[28].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[29].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[30].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_3|mux2to1:bit_slice[31].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0
+inputA[0] => inputA[0].IN1
+inputA[1] => inputA[1].IN1
+inputA[2] => inputA[2].IN1
+inputA[3] => inputA[3].IN1
+inputA[4] => inputA[4].IN1
+inputA[5] => inputA[5].IN1
+inputA[6] => inputA[6].IN1
+inputA[7] => inputA[7].IN1
+inputA[8] => inputA[8].IN1
+inputA[9] => inputA[9].IN1
+inputA[10] => inputA[10].IN1
+inputA[11] => inputA[11].IN1
+inputA[12] => inputA[12].IN1
+inputA[13] => inputA[13].IN1
+inputA[14] => inputA[14].IN1
+inputA[15] => inputA[15].IN1
+inputA[16] => inputA[16].IN1
+inputA[17] => inputA[17].IN1
+inputA[18] => inputA[18].IN1
+inputA[19] => inputA[19].IN1
+inputA[20] => inputA[20].IN1
+inputA[21] => inputA[21].IN1
+inputA[22] => inputA[22].IN1
+inputA[23] => inputA[23].IN1
+inputA[24] => inputA[24].IN1
+inputA[25] => inputA[25].IN1
+inputA[26] => inputA[26].IN1
+inputA[27] => inputA[27].IN1
+inputA[28] => inputA[28].IN1
+inputA[29] => inputA[29].IN1
+inputA[30] => inputA[30].IN1
+inputA[31] => inputA[31].IN1
+inputB[0] => inputB[0].IN1
+inputB[1] => inputB[1].IN1
+inputB[2] => inputB[2].IN1
+inputB[3] => inputB[3].IN1
+inputB[4] => inputB[4].IN1
+inputB[5] => inputB[5].IN1
+inputB[6] => inputB[6].IN1
+inputB[7] => inputB[7].IN1
+inputB[8] => inputB[8].IN1
+inputB[9] => inputB[9].IN1
+inputB[10] => inputB[10].IN1
+inputB[11] => inputB[11].IN1
+inputB[12] => inputB[12].IN1
+inputB[13] => inputB[13].IN1
+inputB[14] => inputB[14].IN1
+inputB[15] => inputB[15].IN1
+inputB[16] => inputB[16].IN1
+inputB[17] => inputB[17].IN1
+inputB[18] => inputB[18].IN1
+inputB[19] => inputB[19].IN1
+inputB[20] => inputB[20].IN1
+inputB[21] => inputB[21].IN1
+inputB[22] => inputB[22].IN1
+inputB[23] => inputB[23].IN1
+inputB[24] => inputB[24].IN1
+inputB[25] => inputB[25].IN1
+inputB[26] => inputB[26].IN1
+inputB[27] => inputB[27].IN1
+inputB[28] => inputB[28].IN1
+inputB[29] => inputB[29].IN1
+inputB[30] => inputB[30].IN1
+inputB[31] => inputB[31].IN1
+select => select.IN32
+outputY[0] <= mux2to1:bit_slice[0].u_mux.out
+outputY[1] <= mux2to1:bit_slice[1].u_mux.out
+outputY[2] <= mux2to1:bit_slice[2].u_mux.out
+outputY[3] <= mux2to1:bit_slice[3].u_mux.out
+outputY[4] <= mux2to1:bit_slice[4].u_mux.out
+outputY[5] <= mux2to1:bit_slice[5].u_mux.out
+outputY[6] <= mux2to1:bit_slice[6].u_mux.out
+outputY[7] <= mux2to1:bit_slice[7].u_mux.out
+outputY[8] <= mux2to1:bit_slice[8].u_mux.out
+outputY[9] <= mux2to1:bit_slice[9].u_mux.out
+outputY[10] <= mux2to1:bit_slice[10].u_mux.out
+outputY[11] <= mux2to1:bit_slice[11].u_mux.out
+outputY[12] <= mux2to1:bit_slice[12].u_mux.out
+outputY[13] <= mux2to1:bit_slice[13].u_mux.out
+outputY[14] <= mux2to1:bit_slice[14].u_mux.out
+outputY[15] <= mux2to1:bit_slice[15].u_mux.out
+outputY[16] <= mux2to1:bit_slice[16].u_mux.out
+outputY[17] <= mux2to1:bit_slice[17].u_mux.out
+outputY[18] <= mux2to1:bit_slice[18].u_mux.out
+outputY[19] <= mux2to1:bit_slice[19].u_mux.out
+outputY[20] <= mux2to1:bit_slice[20].u_mux.out
+outputY[21] <= mux2to1:bit_slice[21].u_mux.out
+outputY[22] <= mux2to1:bit_slice[22].u_mux.out
+outputY[23] <= mux2to1:bit_slice[23].u_mux.out
+outputY[24] <= mux2to1:bit_slice[24].u_mux.out
+outputY[25] <= mux2to1:bit_slice[25].u_mux.out
+outputY[26] <= mux2to1:bit_slice[26].u_mux.out
+outputY[27] <= mux2to1:bit_slice[27].u_mux.out
+outputY[28] <= mux2to1:bit_slice[28].u_mux.out
+outputY[29] <= mux2to1:bit_slice[29].u_mux.out
+outputY[30] <= mux2to1:bit_slice[30].u_mux.out
+outputY[31] <= mux2to1:bit_slice[31].u_mux.out
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[0].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[1].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[2].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[3].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[4].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[5].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[6].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[7].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[8].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[9].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[10].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[11].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[12].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[13].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[14].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[15].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[16].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[17].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[18].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[19].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[20].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[21].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[22].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[23].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[24].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[25].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[26].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[27].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[28].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[29].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[30].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_0|mux2to1:bit_slice[31].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1
+inputA[0] => inputA[0].IN1
+inputA[1] => inputA[1].IN1
+inputA[2] => inputA[2].IN1
+inputA[3] => inputA[3].IN1
+inputA[4] => inputA[4].IN1
+inputA[5] => inputA[5].IN1
+inputA[6] => inputA[6].IN1
+inputA[7] => inputA[7].IN1
+inputA[8] => inputA[8].IN1
+inputA[9] => inputA[9].IN1
+inputA[10] => inputA[10].IN1
+inputA[11] => inputA[11].IN1
+inputA[12] => inputA[12].IN1
+inputA[13] => inputA[13].IN1
+inputA[14] => inputA[14].IN1
+inputA[15] => inputA[15].IN1
+inputA[16] => inputA[16].IN1
+inputA[17] => inputA[17].IN1
+inputA[18] => inputA[18].IN1
+inputA[19] => inputA[19].IN1
+inputA[20] => inputA[20].IN1
+inputA[21] => inputA[21].IN1
+inputA[22] => inputA[22].IN1
+inputA[23] => inputA[23].IN1
+inputA[24] => inputA[24].IN1
+inputA[25] => inputA[25].IN1
+inputA[26] => inputA[26].IN1
+inputA[27] => inputA[27].IN1
+inputA[28] => inputA[28].IN1
+inputA[29] => inputA[29].IN1
+inputA[30] => inputA[30].IN1
+inputA[31] => inputA[31].IN1
+inputB[0] => inputB[0].IN1
+inputB[1] => inputB[1].IN1
+inputB[2] => inputB[2].IN1
+inputB[3] => inputB[3].IN1
+inputB[4] => inputB[4].IN1
+inputB[5] => inputB[5].IN1
+inputB[6] => inputB[6].IN1
+inputB[7] => inputB[7].IN1
+inputB[8] => inputB[8].IN1
+inputB[9] => inputB[9].IN1
+inputB[10] => inputB[10].IN1
+inputB[11] => inputB[11].IN1
+inputB[12] => inputB[12].IN1
+inputB[13] => inputB[13].IN1
+inputB[14] => inputB[14].IN1
+inputB[15] => inputB[15].IN1
+inputB[16] => inputB[16].IN1
+inputB[17] => inputB[17].IN1
+inputB[18] => inputB[18].IN1
+inputB[19] => inputB[19].IN1
+inputB[20] => inputB[20].IN1
+inputB[21] => inputB[21].IN1
+inputB[22] => inputB[22].IN1
+inputB[23] => inputB[23].IN1
+inputB[24] => inputB[24].IN1
+inputB[25] => inputB[25].IN1
+inputB[26] => inputB[26].IN1
+inputB[27] => inputB[27].IN1
+inputB[28] => inputB[28].IN1
+inputB[29] => inputB[29].IN1
+inputB[30] => inputB[30].IN1
+inputB[31] => inputB[31].IN1
+select => select.IN32
+outputY[0] <= mux2to1:bit_slice[0].u_mux.out
+outputY[1] <= mux2to1:bit_slice[1].u_mux.out
+outputY[2] <= mux2to1:bit_slice[2].u_mux.out
+outputY[3] <= mux2to1:bit_slice[3].u_mux.out
+outputY[4] <= mux2to1:bit_slice[4].u_mux.out
+outputY[5] <= mux2to1:bit_slice[5].u_mux.out
+outputY[6] <= mux2to1:bit_slice[6].u_mux.out
+outputY[7] <= mux2to1:bit_slice[7].u_mux.out
+outputY[8] <= mux2to1:bit_slice[8].u_mux.out
+outputY[9] <= mux2to1:bit_slice[9].u_mux.out
+outputY[10] <= mux2to1:bit_slice[10].u_mux.out
+outputY[11] <= mux2to1:bit_slice[11].u_mux.out
+outputY[12] <= mux2to1:bit_slice[12].u_mux.out
+outputY[13] <= mux2to1:bit_slice[13].u_mux.out
+outputY[14] <= mux2to1:bit_slice[14].u_mux.out
+outputY[15] <= mux2to1:bit_slice[15].u_mux.out
+outputY[16] <= mux2to1:bit_slice[16].u_mux.out
+outputY[17] <= mux2to1:bit_slice[17].u_mux.out
+outputY[18] <= mux2to1:bit_slice[18].u_mux.out
+outputY[19] <= mux2to1:bit_slice[19].u_mux.out
+outputY[20] <= mux2to1:bit_slice[20].u_mux.out
+outputY[21] <= mux2to1:bit_slice[21].u_mux.out
+outputY[22] <= mux2to1:bit_slice[22].u_mux.out
+outputY[23] <= mux2to1:bit_slice[23].u_mux.out
+outputY[24] <= mux2to1:bit_slice[24].u_mux.out
+outputY[25] <= mux2to1:bit_slice[25].u_mux.out
+outputY[26] <= mux2to1:bit_slice[26].u_mux.out
+outputY[27] <= mux2to1:bit_slice[27].u_mux.out
+outputY[28] <= mux2to1:bit_slice[28].u_mux.out
+outputY[29] <= mux2to1:bit_slice[29].u_mux.out
+outputY[30] <= mux2to1:bit_slice[30].u_mux.out
+outputY[31] <= mux2to1:bit_slice[31].u_mux.out
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[0].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[1].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[2].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[3].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[4].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[5].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[6].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[7].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[8].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[9].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[10].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[11].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[12].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[13].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[14].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[15].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[16].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[17].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[18].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[19].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[20].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[21].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[22].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[23].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[24].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[25].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[26].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[27].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[28].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[29].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[30].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L2_1|mux2to1:bit_slice[31].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL
+inputA[0] => inputA[0].IN1
+inputA[1] => inputA[1].IN1
+inputA[2] => inputA[2].IN1
+inputA[3] => inputA[3].IN1
+inputA[4] => inputA[4].IN1
+inputA[5] => inputA[5].IN1
+inputA[6] => inputA[6].IN1
+inputA[7] => inputA[7].IN1
+inputA[8] => inputA[8].IN1
+inputA[9] => inputA[9].IN1
+inputA[10] => inputA[10].IN1
+inputA[11] => inputA[11].IN1
+inputA[12] => inputA[12].IN1
+inputA[13] => inputA[13].IN1
+inputA[14] => inputA[14].IN1
+inputA[15] => inputA[15].IN1
+inputA[16] => inputA[16].IN1
+inputA[17] => inputA[17].IN1
+inputA[18] => inputA[18].IN1
+inputA[19] => inputA[19].IN1
+inputA[20] => inputA[20].IN1
+inputA[21] => inputA[21].IN1
+inputA[22] => inputA[22].IN1
+inputA[23] => inputA[23].IN1
+inputA[24] => inputA[24].IN1
+inputA[25] => inputA[25].IN1
+inputA[26] => inputA[26].IN1
+inputA[27] => inputA[27].IN1
+inputA[28] => inputA[28].IN1
+inputA[29] => inputA[29].IN1
+inputA[30] => inputA[30].IN1
+inputA[31] => inputA[31].IN1
+inputB[0] => inputB[0].IN1
+inputB[1] => inputB[1].IN1
+inputB[2] => inputB[2].IN1
+inputB[3] => inputB[3].IN1
+inputB[4] => inputB[4].IN1
+inputB[5] => inputB[5].IN1
+inputB[6] => inputB[6].IN1
+inputB[7] => inputB[7].IN1
+inputB[8] => inputB[8].IN1
+inputB[9] => inputB[9].IN1
+inputB[10] => inputB[10].IN1
+inputB[11] => inputB[11].IN1
+inputB[12] => inputB[12].IN1
+inputB[13] => inputB[13].IN1
+inputB[14] => inputB[14].IN1
+inputB[15] => inputB[15].IN1
+inputB[16] => inputB[16].IN1
+inputB[17] => inputB[17].IN1
+inputB[18] => inputB[18].IN1
+inputB[19] => inputB[19].IN1
+inputB[20] => inputB[20].IN1
+inputB[21] => inputB[21].IN1
+inputB[22] => inputB[22].IN1
+inputB[23] => inputB[23].IN1
+inputB[24] => inputB[24].IN1
+inputB[25] => inputB[25].IN1
+inputB[26] => inputB[26].IN1
+inputB[27] => inputB[27].IN1
+inputB[28] => inputB[28].IN1
+inputB[29] => inputB[29].IN1
+inputB[30] => inputB[30].IN1
+inputB[31] => inputB[31].IN1
+select => select.IN32
+outputY[0] <= mux2to1:bit_slice[0].u_mux.out
+outputY[1] <= mux2to1:bit_slice[1].u_mux.out
+outputY[2] <= mux2to1:bit_slice[2].u_mux.out
+outputY[3] <= mux2to1:bit_slice[3].u_mux.out
+outputY[4] <= mux2to1:bit_slice[4].u_mux.out
+outputY[5] <= mux2to1:bit_slice[5].u_mux.out
+outputY[6] <= mux2to1:bit_slice[6].u_mux.out
+outputY[7] <= mux2to1:bit_slice[7].u_mux.out
+outputY[8] <= mux2to1:bit_slice[8].u_mux.out
+outputY[9] <= mux2to1:bit_slice[9].u_mux.out
+outputY[10] <= mux2to1:bit_slice[10].u_mux.out
+outputY[11] <= mux2to1:bit_slice[11].u_mux.out
+outputY[12] <= mux2to1:bit_slice[12].u_mux.out
+outputY[13] <= mux2to1:bit_slice[13].u_mux.out
+outputY[14] <= mux2to1:bit_slice[14].u_mux.out
+outputY[15] <= mux2to1:bit_slice[15].u_mux.out
+outputY[16] <= mux2to1:bit_slice[16].u_mux.out
+outputY[17] <= mux2to1:bit_slice[17].u_mux.out
+outputY[18] <= mux2to1:bit_slice[18].u_mux.out
+outputY[19] <= mux2to1:bit_slice[19].u_mux.out
+outputY[20] <= mux2to1:bit_slice[20].u_mux.out
+outputY[21] <= mux2to1:bit_slice[21].u_mux.out
+outputY[22] <= mux2to1:bit_slice[22].u_mux.out
+outputY[23] <= mux2to1:bit_slice[23].u_mux.out
+outputY[24] <= mux2to1:bit_slice[24].u_mux.out
+outputY[25] <= mux2to1:bit_slice[25].u_mux.out
+outputY[26] <= mux2to1:bit_slice[26].u_mux.out
+outputY[27] <= mux2to1:bit_slice[27].u_mux.out
+outputY[28] <= mux2to1:bit_slice[28].u_mux.out
+outputY[29] <= mux2to1:bit_slice[29].u_mux.out
+outputY[30] <= mux2to1:bit_slice[30].u_mux.out
+outputY[31] <= mux2to1:bit_slice[31].u_mux.out
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[0].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[1].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[2].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[3].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[4].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[5].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[6].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[7].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[8].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[9].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[10].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[11].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[12].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[13].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[14].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[15].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[16].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[17].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[18].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[19].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[20].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[21].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[22].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[23].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[24].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[25].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[26].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[27].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[28].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[29].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[30].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L3_FINAL|mux2to1:bit_slice[31].u_mux
+input0 => second.IN0
+input1 => first.IN0
+select => first.IN1
+select => second.IN1
+out <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+

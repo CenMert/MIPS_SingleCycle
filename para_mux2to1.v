@@ -1,5 +1,5 @@
 module para_mux2to1
-    # (parameter DATA_WIDTH = 32;) 
+    #(parameter DATA_WIDTH = 32) 
 (
     // Input/Output ports are 5 bits wide
     input wire [DATA_WIDTH-1:0] inputA,    // 5-bit Input A (Selected when select=0)

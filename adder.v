@@ -36,7 +36,7 @@ endmodule
 // I dont want to use one more adder to get 2's comp, in order
 // to get rid of that, Ill add 1 from the beginning
 module adder_32bit
-    parameter CARRY_IN_0 = 1'b0;
+    #(parameter CARRY_IN_0 = 1'b0)
 (
     input wire [31:0] a,
     input wire [31:0] b,
@@ -52,8 +52,7 @@ module adder_32bit
 
     genvar i;
     generate
-        for (i = 0; i < 32; i = i+1) : concat_full_adder
-        begin
+        for (i = 0; i < 32; i = i+1) begin : concat_full_adder
             
             full_adder generate_full_adder
             (

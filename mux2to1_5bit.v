@@ -9,10 +9,10 @@ genvar i;
 generate
     for (i = 0; i < 5; i = i + 1) begin : mux2to1_5bit
         mux2to1 base_mux (
-            .a(in0[i]),
-            .b(in1[i]),
-            .sel(sel),
-            .y(y[i])
+            .input0(in0[i]),
+            .input1(in1[i]),
+            .select(sel),
+            .out(y[i])
         );
     end
 endgenerate

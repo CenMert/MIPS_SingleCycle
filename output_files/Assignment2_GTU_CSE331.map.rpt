@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Assignment2_GTU_CSE331
-Tue Nov 25 20:32:59 2025
+Sat Dec  6 17:47:44 2025
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -10,7 +10,34 @@ Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. User-Specified and Inferred Latches
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Parameter Settings for User Entity Instance: para_mux2to1:ALU_second_src_mux
+ 12. Parameter Settings for User Entity Instance: alu:ALU|adder_32bit:ALU_adder
+ 13. Parameter Settings for User Entity Instance: alu:ALU|adder_32bit:substractor_32bit
+ 14. Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:SLT_mux
+ 15. Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:mux_L1_0
+ 16. Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:mux_L1_1
+ 17. Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:mux_L1_2
+ 18. Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:mux_L1_3
+ 19. Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:mux_L2_0
+ 20. Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:mux_L2_1
+ 21. Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:mux_L3_FINAL
+ 22. Port Connectivity Checks: "alu:ALU|para_mux2to1:mux_L1_3"
+ 23. Port Connectivity Checks: "alu:ALU|para_mux2to1:SLT_mux"
+ 24. Port Connectivity Checks: "alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[0].generate_full_adder"
+ 25. Port Connectivity Checks: "alu:ALU|adder_32bit:substractor_32bit"
+ 26. Port Connectivity Checks: "alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[0].generate_full_adder"
+ 27. Port Connectivity Checks: "alu:ALU|adder_32bit:ALU_adder"
+ 28. Port Connectivity Checks: "alu:ALU"
+ 29. Post-Synthesis Netlist Statistics for Top Partition
+ 30. Elapsed Time Per Partition
+ 31. Analysis & Synthesis Messages
+ 32. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -34,109 +61,114 @@ on the Quartus Prime software download page.
 
 
 
-+-------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                  ;
-+-----------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Tue Nov 25 20:32:59 2025               ;
-; Quartus Prime Version       ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
-; Revision Name               ; Assignment2_GTU_CSE331                          ;
-; Top-level Entity Name       ; Assignment2_GTU_CSE331                          ;
-; Family                      ; Cyclone V                                       ;
-; Logic utilization (in ALMs) ; N/A until Partition Merge                       ;
-; Total registers             ; N/A until Partition Merge                       ;
-; Total pins                  ; N/A until Partition Merge                       ;
-; Total virtual pins          ; N/A until Partition Merge                       ;
-; Total block memory bits     ; N/A until Partition Merge                       ;
-; Total PLLs                  ; N/A until Partition Merge                       ;
-; Total DLLs                  ; N/A until Partition Merge                       ;
-+-----------------------------+-------------------------------------------------+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sat Dec  6 17:47:44 2025           ;
+; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
+; Revision Name                   ; Assignment2_GTU_CSE331                          ;
+; Top-level Entity Name           ; mips_single_cycle_datapath                      ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 0                                               ;
+; Total pins                      ; 98                                              ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 0                                               ;
+; Total DSP Blocks                ; 0                                               ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Settings                                                                                                     ;
-+---------------------------------------------------------------------------------+------------------------+------------------------+
-; Option                                                                          ; Setting                ; Default Value          ;
-+---------------------------------------------------------------------------------+------------------------+------------------------+
-; Device                                                                          ; 5CGXFC7C7F23C8         ;                        ;
-; Top-level entity name                                                           ; Assignment2_GTU_CSE331 ; Assignment2_GTU_CSE331 ;
-; Family name                                                                     ; Cyclone V              ; Cyclone V              ;
-; Use smart compilation                                                           ; Off                    ; Off                    ;
-; Enable parallel Assembler and Timing Analyzer during compilation                ; On                     ; On                     ;
-; Enable compact report table                                                     ; Off                    ; Off                    ;
-; Restructure Multiplexers                                                        ; Auto                   ; Auto                   ;
-; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                    ; Off                    ;
-; Create Debugging Nodes for IP Cores                                             ; Off                    ; Off                    ;
-; Preserve fewer node names                                                       ; On                     ; On                     ;
-; Intel FPGA IP Evaluation Mode                                                   ; Enable                 ; Enable                 ;
-; Verilog Version                                                                 ; Verilog_2001           ; Verilog_2001           ;
-; VHDL Version                                                                    ; VHDL_1993              ; VHDL_1993              ;
-; State Machine Processing                                                        ; Auto                   ; Auto                   ;
-; Safe State Machine                                                              ; Off                    ; Off                    ;
-; Extract Verilog State Machines                                                  ; On                     ; On                     ;
-; Extract VHDL State Machines                                                     ; On                     ; On                     ;
-; Ignore Verilog initial constructs                                               ; Off                    ; Off                    ;
-; Iteration limit for constant Verilog loops                                      ; 5000                   ; 5000                   ;
-; Iteration limit for non-constant Verilog loops                                  ; 250                    ; 250                    ;
-; Add Pass-Through Logic to Inferred RAMs                                         ; On                     ; On                     ;
-; Infer RAMs from Raw Logic                                                       ; On                     ; On                     ;
-; Parallel Synthesis                                                              ; On                     ; On                     ;
-; DSP Block Balancing                                                             ; Auto                   ; Auto                   ;
-; NOT Gate Push-Back                                                              ; On                     ; On                     ;
-; Power-Up Don't Care                                                             ; On                     ; On                     ;
-; Remove Redundant Logic Cells                                                    ; Off                    ; Off                    ;
-; Remove Duplicate Registers                                                      ; On                     ; On                     ;
-; Ignore CARRY Buffers                                                            ; Off                    ; Off                    ;
-; Ignore CASCADE Buffers                                                          ; Off                    ; Off                    ;
-; Ignore GLOBAL Buffers                                                           ; Off                    ; Off                    ;
-; Ignore ROW GLOBAL Buffers                                                       ; Off                    ; Off                    ;
-; Ignore LCELL Buffers                                                            ; Off                    ; Off                    ;
-; Ignore SOFT Buffers                                                             ; On                     ; On                     ;
-; Limit AHDL Integers to 32 Bits                                                  ; Off                    ; Off                    ;
-; Optimization Technique                                                          ; Balanced               ; Balanced               ;
-; Carry Chain Length                                                              ; 70                     ; 70                     ;
-; Auto Carry Chains                                                               ; On                     ; On                     ;
-; Auto Open-Drain Pins                                                            ; On                     ; On                     ;
-; Perform WYSIWYG Primitive Resynthesis                                           ; Off                    ; Off                    ;
-; Auto ROM Replacement                                                            ; On                     ; On                     ;
-; Auto RAM Replacement                                                            ; On                     ; On                     ;
-; Auto DSP Block Replacement                                                      ; On                     ; On                     ;
-; Auto Shift Register Replacement                                                 ; Auto                   ; Auto                   ;
-; Allow Shift Register Merging across Hierarchies                                 ; Auto                   ; Auto                   ;
-; Auto Clock Enable Replacement                                                   ; On                     ; On                     ;
-; Strict RAM Replacement                                                          ; Off                    ; Off                    ;
-; Allow Synchronous Control Signals                                               ; On                     ; On                     ;
-; Force Use of Synchronous Clear Signals                                          ; Off                    ; Off                    ;
-; Auto Resource Sharing                                                           ; Off                    ; Off                    ;
-; Allow Any RAM Size For Recognition                                              ; Off                    ; Off                    ;
-; Allow Any ROM Size For Recognition                                              ; Off                    ; Off                    ;
-; Allow Any Shift Register Size For Recognition                                   ; Off                    ; Off                    ;
-; Use LogicLock Constraints during Resource Balancing                             ; On                     ; On                     ;
-; Ignore translate_off and synthesis_off directives                               ; Off                    ; Off                    ;
-; Timing-Driven Synthesis                                                         ; On                     ; On                     ;
-; Report Parameter Settings                                                       ; On                     ; On                     ;
-; Report Source Assignments                                                       ; On                     ; On                     ;
-; Report Connectivity Checks                                                      ; On                     ; On                     ;
-; Ignore Maximum Fan-Out Assignments                                              ; Off                    ; Off                    ;
-; Synchronization Register Chain Length                                           ; 3                      ; 3                      ;
-; Power Optimization During Synthesis                                             ; Normal compilation     ; Normal compilation     ;
-; HDL message level                                                               ; Level2                 ; Level2                 ;
-; Suppress Register Optimization Related Messages                                 ; Off                    ; Off                    ;
-; Number of Removed Registers Reported in Synthesis Report                        ; 5000                   ; 5000                   ;
-; Number of Swept Nodes Reported in Synthesis Report                              ; 5000                   ; 5000                   ;
-; Number of Inverted Registers Reported in Synthesis Report                       ; 100                    ; 100                    ;
-; Clock MUX Protection                                                            ; On                     ; On                     ;
-; Auto Gated Clock Conversion                                                     ; Off                    ; Off                    ;
-; Block Design Naming                                                             ; Auto                   ; Auto                   ;
-; SDC constraint protection                                                       ; Off                    ; Off                    ;
-; Synthesis Effort                                                                ; Auto                   ; Auto                   ;
-; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                     ; On                     ;
-; Pre-Mapping Resynthesis Optimization                                            ; Off                    ; Off                    ;
-; Analysis & Synthesis Message Level                                              ; Medium                 ; Medium                 ;
-; Disable Register Merging Across Hierarchies                                     ; Auto                   ; Auto                   ;
-; Resource Aware Inference For Block RAM                                          ; On                     ; On                     ;
-; Automatic Parallel Synthesis                                                    ; On                     ; On                     ;
-; Partial Reconfiguration Bitstream ID                                            ; Off                    ; Off                    ;
-+---------------------------------------------------------------------------------+------------------------+------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                                         ;
++---------------------------------------------------------------------------------+----------------------------+------------------------+
+; Option                                                                          ; Setting                    ; Default Value          ;
++---------------------------------------------------------------------------------+----------------------------+------------------------+
+; Device                                                                          ; 5CGXFC7C7F23C8             ;                        ;
+; Top-level entity name                                                           ; mips_single_cycle_datapath ; Assignment2_GTU_CSE331 ;
+; Family name                                                                     ; Cyclone V                  ; Cyclone V              ;
+; Use smart compilation                                                           ; Off                        ; Off                    ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                         ; On                     ;
+; Enable compact report table                                                     ; Off                        ; Off                    ;
+; Restructure Multiplexers                                                        ; Auto                       ; Auto                   ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                        ; Off                    ;
+; Create Debugging Nodes for IP Cores                                             ; Off                        ; Off                    ;
+; Preserve fewer node names                                                       ; On                         ; On                     ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable                     ; Enable                 ;
+; Verilog Version                                                                 ; Verilog_2001               ; Verilog_2001           ;
+; VHDL Version                                                                    ; VHDL_1993                  ; VHDL_1993              ;
+; State Machine Processing                                                        ; Auto                       ; Auto                   ;
+; Safe State Machine                                                              ; Off                        ; Off                    ;
+; Extract Verilog State Machines                                                  ; On                         ; On                     ;
+; Extract VHDL State Machines                                                     ; On                         ; On                     ;
+; Ignore Verilog initial constructs                                               ; Off                        ; Off                    ;
+; Iteration limit for constant Verilog loops                                      ; 5000                       ; 5000                   ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                        ; 250                    ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                         ; On                     ;
+; Infer RAMs from Raw Logic                                                       ; On                         ; On                     ;
+; Parallel Synthesis                                                              ; On                         ; On                     ;
+; DSP Block Balancing                                                             ; Auto                       ; Auto                   ;
+; NOT Gate Push-Back                                                              ; On                         ; On                     ;
+; Power-Up Don't Care                                                             ; On                         ; On                     ;
+; Remove Redundant Logic Cells                                                    ; Off                        ; Off                    ;
+; Remove Duplicate Registers                                                      ; On                         ; On                     ;
+; Ignore CARRY Buffers                                                            ; Off                        ; Off                    ;
+; Ignore CASCADE Buffers                                                          ; Off                        ; Off                    ;
+; Ignore GLOBAL Buffers                                                           ; Off                        ; Off                    ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                        ; Off                    ;
+; Ignore LCELL Buffers                                                            ; Off                        ; Off                    ;
+; Ignore SOFT Buffers                                                             ; On                         ; On                     ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                        ; Off                    ;
+; Optimization Technique                                                          ; Balanced                   ; Balanced               ;
+; Carry Chain Length                                                              ; 70                         ; 70                     ;
+; Auto Carry Chains                                                               ; On                         ; On                     ;
+; Auto Open-Drain Pins                                                            ; On                         ; On                     ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                        ; Off                    ;
+; Auto ROM Replacement                                                            ; On                         ; On                     ;
+; Auto RAM Replacement                                                            ; On                         ; On                     ;
+; Auto DSP Block Replacement                                                      ; On                         ; On                     ;
+; Auto Shift Register Replacement                                                 ; Auto                       ; Auto                   ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto                       ; Auto                   ;
+; Auto Clock Enable Replacement                                                   ; On                         ; On                     ;
+; Strict RAM Replacement                                                          ; Off                        ; Off                    ;
+; Allow Synchronous Control Signals                                               ; On                         ; On                     ;
+; Force Use of Synchronous Clear Signals                                          ; Off                        ; Off                    ;
+; Auto Resource Sharing                                                           ; Off                        ; Off                    ;
+; Allow Any RAM Size For Recognition                                              ; Off                        ; Off                    ;
+; Allow Any ROM Size For Recognition                                              ; Off                        ; Off                    ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                        ; Off                    ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                         ; On                     ;
+; Ignore translate_off and synthesis_off directives                               ; Off                        ; Off                    ;
+; Timing-Driven Synthesis                                                         ; On                         ; On                     ;
+; Report Parameter Settings                                                       ; On                         ; On                     ;
+; Report Source Assignments                                                       ; On                         ; On                     ;
+; Report Connectivity Checks                                                      ; On                         ; On                     ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                        ; Off                    ;
+; Synchronization Register Chain Length                                           ; 3                          ; 3                      ;
+; Power Optimization During Synthesis                                             ; Normal compilation         ; Normal compilation     ;
+; HDL message level                                                               ; Level2                     ; Level2                 ;
+; Suppress Register Optimization Related Messages                                 ; Off                        ; Off                    ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000                       ; 5000                   ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000                       ; 5000                   ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                        ; 100                    ;
+; Clock MUX Protection                                                            ; On                         ; On                     ;
+; Auto Gated Clock Conversion                                                     ; Off                        ; Off                    ;
+; Block Design Naming                                                             ; Auto                       ; Auto                   ;
+; SDC constraint protection                                                       ; Off                        ; Off                    ;
+; Synthesis Effort                                                                ; Auto                       ; Auto                   ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                         ; On                     ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                        ; Off                    ;
+; Analysis & Synthesis Message Level                                              ; Medium                     ; Medium                 ;
+; Disable Register Merging Across Hierarchies                                     ; Auto                       ; Auto                   ;
+; Resource Aware Inference For Block RAM                                          ; On                         ; On                     ;
+; Automatic Parallel Synthesis                                                    ; On                         ; On                     ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                        ; Off                    ;
++---------------------------------------------------------------------------------+----------------------------+------------------------+
 
 
 +------------------------------------------+
@@ -148,11 +180,1339 @@ on the Quartus Prime software download page.
 ; Maximum allowed            ; 12          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 12          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processors 2-12        ;   0.0%      ;
 +----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                    ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                      ; Library ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------+---------+
+; para_mux2to1.v                   ; yes             ; User Verilog HDL File  ; /home/kaz/Documents/Quartus_Projects/para_mux2to1.v               ;         ;
+; adder.v                          ; yes             ; User Verilog HDL File  ; /home/kaz/Documents/Quartus_Projects/adder.v                      ;         ;
+; mips_single_cycle_datapath.v     ; yes             ; User Verilog HDL File  ; /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v ;         ;
+; mux2to1_1bit.v                   ; yes             ; User Verilog HDL File  ; /home/kaz/Documents/Quartus_Projects/mux2to1_1bit.v               ;         ;
+; control_unit.v                   ; yes             ; User Verilog HDL File  ; /home/kaz/Documents/Quartus_Projects/control_unit.v               ;         ;
+; alu_control.v                    ; yes             ; User Verilog HDL File  ; /home/kaz/Documents/Quartus_Projects/alu_control.v                ;         ;
+; alu.v                            ; yes             ; User Verilog HDL File  ; /home/kaz/Documents/Quartus_Projects/alu.v                        ;         ;
+; mux2to1_5bit.v                   ; yes             ; User Verilog HDL File  ; /home/kaz/Documents/Quartus_Projects/mux2to1_5bit.v               ;         ;
+; sign_extender.v                  ; yes             ; User Verilog HDL File  ; /home/kaz/Documents/Quartus_Projects/sign_extender.v              ;         ;
+; register_file.v                  ; yes             ; User Verilog HDL File  ; /home/kaz/Documents/Quartus_Projects/register_file.v              ;         ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------+---------+
+
+
++----------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                ;
++---------------------------------------------+------------------------------+
+; Resource                                    ; Usage                        ;
++---------------------------------------------+------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 9                            ;
+;                                             ;                              ;
+; Combinational ALUT usage for logic          ; 14                           ;
+;     -- 7 input functions                    ; 0                            ;
+;     -- 6 input functions                    ; 3                            ;
+;     -- 5 input functions                    ; 4                            ;
+;     -- 4 input functions                    ; 1                            ;
+;     -- <=3 input functions                  ; 6                            ;
+;                                             ;                              ;
+; Dedicated logic registers                   ; 0                            ;
+;                                             ;                              ;
+; I/O pins                                    ; 98                           ;
+;                                             ;                              ;
+; Total DSP Blocks                            ; 0                            ;
+;                                             ;                              ;
+; Maximum fan-out node                        ; control_unit:CU|tempAluOp[0] ;
+; Maximum fan-out                             ; 4                            ;
+; Total fan-out                               ; 157                          ;
+; Average fan-out                             ; 0.75                         ;
++---------------------------------------------+------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                               ;
++---------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------+----------------------------+--------------+
+; Compilation Hierarchy Node            ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                  ; Entity Name                ; Library Name ;
++---------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------+----------------------------+--------------+
+; |mips_single_cycle_datapath           ; 14 (0)              ; 0 (0)                     ; 0                 ; 0          ; 98   ; 0            ; |mips_single_cycle_datapath                                                          ; mips_single_cycle_datapath ; work         ;
+;    |alu:ALU|                          ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mips_single_cycle_datapath|alu:ALU                                                  ; alu                        ; work         ;
+;       |para_mux2to1:mux_L1_0|         ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0                            ; para_mux2to1               ; work         ;
+;          |mux2to1:bit_slice[0].u_mux| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mips_single_cycle_datapath|alu:ALU|para_mux2to1:mux_L1_0|mux2to1:bit_slice[0].u_mux ; mux2to1                    ; work         ;
+;    |alu_control:ALU_CTRL|             ; 6 (6)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mips_single_cycle_datapath|alu_control:ALU_CTRL                                     ; alu_control                ; work         ;
+;    |control_unit:CU|                  ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mips_single_cycle_datapath|control_unit:CU                                          ; control_unit               ; work         ;
++---------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------+----------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                 ;
++----------------------------------------------------+---------------------------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal                   ; Free of Timing Hazards ;
++----------------------------------------------------+---------------------------------------+------------------------+
+; control_unit:CU|tempAlu                            ; control_unit:CU|WideOr0               ; yes                    ;
+; alu_control:ALU_CTRL|alu_control_temp              ; alu_control:ALU_CTRL|alu_control_temp ; yes                    ;
+; control_unit:CU|tempAluOp[0]                       ; control_unit:CU|WideOr0               ; yes                    ;
+; control_unit:CU|tempAluOp[1]                       ; control_unit:CU|WideOr0               ; yes                    ;
+; Number of user-specified and inferred latches = 4  ;                                       ;                        ;
++----------------------------------------------------+---------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++-----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                ;
++------------------------------------------+----------------------------------------+
+; Register name                            ; Reason for Removal                     ;
++------------------------------------------+----------------------------------------+
+; register_file:RF|register~1              ; Lost fanout                            ;
+; register_file:RF|register~2              ; Lost fanout                            ;
+; register_file:RF|register~3              ; Lost fanout                            ;
+; register_file:RF|register~4              ; Lost fanout                            ;
+; register_file:RF|register~5              ; Lost fanout                            ;
+; register_file:RF|register~6              ; Lost fanout                            ;
+; register_file:RF|register~7              ; Lost fanout                            ;
+; register_file:RF|register~8              ; Lost fanout                            ;
+; register_file:RF|register~9              ; Lost fanout                            ;
+; register_file:RF|register~10             ; Lost fanout                            ;
+; register_file:RF|register~11             ; Lost fanout                            ;
+; register_file:RF|register~12             ; Lost fanout                            ;
+; register_file:RF|register~13             ; Lost fanout                            ;
+; register_file:RF|register~14             ; Lost fanout                            ;
+; register_file:RF|register~15             ; Lost fanout                            ;
+; register_file:RF|register~16             ; Lost fanout                            ;
+; register_file:RF|register~17             ; Lost fanout                            ;
+; register_file:RF|register~18             ; Lost fanout                            ;
+; register_file:RF|register~19             ; Lost fanout                            ;
+; register_file:RF|register~20             ; Lost fanout                            ;
+; register_file:RF|register~21             ; Lost fanout                            ;
+; register_file:RF|register~22             ; Lost fanout                            ;
+; register_file:RF|register~23             ; Lost fanout                            ;
+; register_file:RF|register~24             ; Lost fanout                            ;
+; register_file:RF|register~25             ; Lost fanout                            ;
+; register_file:RF|register~26             ; Lost fanout                            ;
+; register_file:RF|register~27             ; Lost fanout                            ;
+; register_file:RF|register~28             ; Lost fanout                            ;
+; register_file:RF|register~29             ; Lost fanout                            ;
+; register_file:RF|register~30             ; Lost fanout                            ;
+; register_file:RF|register~31             ; Lost fanout                            ;
+; register_file:RF|register~33             ; Lost fanout                            ;
+; register_file:RF|register~34             ; Lost fanout                            ;
+; register_file:RF|register~35             ; Lost fanout                            ;
+; register_file:RF|register~36             ; Lost fanout                            ;
+; register_file:RF|register~37             ; Lost fanout                            ;
+; register_file:RF|register~38             ; Lost fanout                            ;
+; register_file:RF|register~39             ; Lost fanout                            ;
+; register_file:RF|register~40             ; Lost fanout                            ;
+; register_file:RF|register~41             ; Lost fanout                            ;
+; register_file:RF|register~42             ; Lost fanout                            ;
+; register_file:RF|register~43             ; Lost fanout                            ;
+; register_file:RF|register~44             ; Lost fanout                            ;
+; register_file:RF|register~45             ; Lost fanout                            ;
+; register_file:RF|register~46             ; Lost fanout                            ;
+; register_file:RF|register~47             ; Lost fanout                            ;
+; register_file:RF|register~48             ; Lost fanout                            ;
+; register_file:RF|register~49             ; Lost fanout                            ;
+; register_file:RF|register~50             ; Lost fanout                            ;
+; register_file:RF|register~51             ; Lost fanout                            ;
+; register_file:RF|register~52             ; Lost fanout                            ;
+; register_file:RF|register~53             ; Lost fanout                            ;
+; register_file:RF|register~54             ; Lost fanout                            ;
+; register_file:RF|register~55             ; Lost fanout                            ;
+; register_file:RF|register~56             ; Lost fanout                            ;
+; register_file:RF|register~57             ; Lost fanout                            ;
+; register_file:RF|register~58             ; Lost fanout                            ;
+; register_file:RF|register~59             ; Lost fanout                            ;
+; register_file:RF|register~60             ; Lost fanout                            ;
+; register_file:RF|register~61             ; Lost fanout                            ;
+; register_file:RF|register~62             ; Lost fanout                            ;
+; register_file:RF|register~63             ; Lost fanout                            ;
+; register_file:RF|register~65             ; Lost fanout                            ;
+; register_file:RF|register~66             ; Lost fanout                            ;
+; register_file:RF|register~67             ; Lost fanout                            ;
+; register_file:RF|register~68             ; Lost fanout                            ;
+; register_file:RF|register~69             ; Lost fanout                            ;
+; register_file:RF|register~70             ; Lost fanout                            ;
+; register_file:RF|register~71             ; Lost fanout                            ;
+; register_file:RF|register~72             ; Lost fanout                            ;
+; register_file:RF|register~73             ; Lost fanout                            ;
+; register_file:RF|register~74             ; Lost fanout                            ;
+; register_file:RF|register~75             ; Lost fanout                            ;
+; register_file:RF|register~76             ; Lost fanout                            ;
+; register_file:RF|register~77             ; Lost fanout                            ;
+; register_file:RF|register~78             ; Lost fanout                            ;
+; register_file:RF|register~79             ; Lost fanout                            ;
+; register_file:RF|register~80             ; Lost fanout                            ;
+; register_file:RF|register~81             ; Lost fanout                            ;
+; register_file:RF|register~82             ; Lost fanout                            ;
+; register_file:RF|register~83             ; Lost fanout                            ;
+; register_file:RF|register~84             ; Lost fanout                            ;
+; register_file:RF|register~85             ; Lost fanout                            ;
+; register_file:RF|register~86             ; Lost fanout                            ;
+; register_file:RF|register~87             ; Lost fanout                            ;
+; register_file:RF|register~88             ; Lost fanout                            ;
+; register_file:RF|register~89             ; Lost fanout                            ;
+; register_file:RF|register~90             ; Lost fanout                            ;
+; register_file:RF|register~91             ; Lost fanout                            ;
+; register_file:RF|register~92             ; Lost fanout                            ;
+; register_file:RF|register~93             ; Lost fanout                            ;
+; register_file:RF|register~94             ; Lost fanout                            ;
+; register_file:RF|register~95             ; Lost fanout                            ;
+; register_file:RF|register~97             ; Lost fanout                            ;
+; register_file:RF|register~98             ; Lost fanout                            ;
+; register_file:RF|register~99             ; Lost fanout                            ;
+; register_file:RF|register~100            ; Lost fanout                            ;
+; register_file:RF|register~101            ; Lost fanout                            ;
+; register_file:RF|register~102            ; Lost fanout                            ;
+; register_file:RF|register~103            ; Lost fanout                            ;
+; register_file:RF|register~104            ; Lost fanout                            ;
+; register_file:RF|register~105            ; Lost fanout                            ;
+; register_file:RF|register~106            ; Lost fanout                            ;
+; register_file:RF|register~107            ; Lost fanout                            ;
+; register_file:RF|register~108            ; Lost fanout                            ;
+; register_file:RF|register~109            ; Lost fanout                            ;
+; register_file:RF|register~110            ; Lost fanout                            ;
+; register_file:RF|register~111            ; Lost fanout                            ;
+; register_file:RF|register~112            ; Lost fanout                            ;
+; register_file:RF|register~113            ; Lost fanout                            ;
+; register_file:RF|register~114            ; Lost fanout                            ;
+; register_file:RF|register~115            ; Lost fanout                            ;
+; register_file:RF|register~116            ; Lost fanout                            ;
+; register_file:RF|register~117            ; Lost fanout                            ;
+; register_file:RF|register~118            ; Lost fanout                            ;
+; register_file:RF|register~119            ; Lost fanout                            ;
+; register_file:RF|register~120            ; Lost fanout                            ;
+; register_file:RF|register~121            ; Lost fanout                            ;
+; register_file:RF|register~122            ; Lost fanout                            ;
+; register_file:RF|register~123            ; Lost fanout                            ;
+; register_file:RF|register~124            ; Lost fanout                            ;
+; register_file:RF|register~125            ; Lost fanout                            ;
+; register_file:RF|register~126            ; Lost fanout                            ;
+; register_file:RF|register~127            ; Lost fanout                            ;
+; register_file:RF|register~129            ; Lost fanout                            ;
+; register_file:RF|register~130            ; Lost fanout                            ;
+; register_file:RF|register~131            ; Lost fanout                            ;
+; register_file:RF|register~132            ; Lost fanout                            ;
+; register_file:RF|register~133            ; Lost fanout                            ;
+; register_file:RF|register~134            ; Lost fanout                            ;
+; register_file:RF|register~135            ; Lost fanout                            ;
+; register_file:RF|register~136            ; Lost fanout                            ;
+; register_file:RF|register~137            ; Lost fanout                            ;
+; register_file:RF|register~138            ; Lost fanout                            ;
+; register_file:RF|register~139            ; Lost fanout                            ;
+; register_file:RF|register~140            ; Lost fanout                            ;
+; register_file:RF|register~141            ; Lost fanout                            ;
+; register_file:RF|register~142            ; Lost fanout                            ;
+; register_file:RF|register~143            ; Lost fanout                            ;
+; register_file:RF|register~144            ; Lost fanout                            ;
+; register_file:RF|register~145            ; Lost fanout                            ;
+; register_file:RF|register~146            ; Lost fanout                            ;
+; register_file:RF|register~147            ; Lost fanout                            ;
+; register_file:RF|register~148            ; Lost fanout                            ;
+; register_file:RF|register~149            ; Lost fanout                            ;
+; register_file:RF|register~150            ; Lost fanout                            ;
+; register_file:RF|register~151            ; Lost fanout                            ;
+; register_file:RF|register~152            ; Lost fanout                            ;
+; register_file:RF|register~153            ; Lost fanout                            ;
+; register_file:RF|register~154            ; Lost fanout                            ;
+; register_file:RF|register~155            ; Lost fanout                            ;
+; register_file:RF|register~156            ; Lost fanout                            ;
+; register_file:RF|register~157            ; Lost fanout                            ;
+; register_file:RF|register~158            ; Lost fanout                            ;
+; register_file:RF|register~159            ; Lost fanout                            ;
+; register_file:RF|register~161            ; Lost fanout                            ;
+; register_file:RF|register~162            ; Lost fanout                            ;
+; register_file:RF|register~163            ; Lost fanout                            ;
+; register_file:RF|register~164            ; Lost fanout                            ;
+; register_file:RF|register~165            ; Lost fanout                            ;
+; register_file:RF|register~166            ; Lost fanout                            ;
+; register_file:RF|register~167            ; Lost fanout                            ;
+; register_file:RF|register~168            ; Lost fanout                            ;
+; register_file:RF|register~169            ; Lost fanout                            ;
+; register_file:RF|register~170            ; Lost fanout                            ;
+; register_file:RF|register~171            ; Lost fanout                            ;
+; register_file:RF|register~172            ; Lost fanout                            ;
+; register_file:RF|register~173            ; Lost fanout                            ;
+; register_file:RF|register~174            ; Lost fanout                            ;
+; register_file:RF|register~175            ; Lost fanout                            ;
+; register_file:RF|register~176            ; Lost fanout                            ;
+; register_file:RF|register~177            ; Lost fanout                            ;
+; register_file:RF|register~178            ; Lost fanout                            ;
+; register_file:RF|register~179            ; Lost fanout                            ;
+; register_file:RF|register~180            ; Lost fanout                            ;
+; register_file:RF|register~181            ; Lost fanout                            ;
+; register_file:RF|register~182            ; Lost fanout                            ;
+; register_file:RF|register~183            ; Lost fanout                            ;
+; register_file:RF|register~184            ; Lost fanout                            ;
+; register_file:RF|register~185            ; Lost fanout                            ;
+; register_file:RF|register~186            ; Lost fanout                            ;
+; register_file:RF|register~187            ; Lost fanout                            ;
+; register_file:RF|register~188            ; Lost fanout                            ;
+; register_file:RF|register~189            ; Lost fanout                            ;
+; register_file:RF|register~190            ; Lost fanout                            ;
+; register_file:RF|register~191            ; Lost fanout                            ;
+; register_file:RF|register~193            ; Lost fanout                            ;
+; register_file:RF|register~194            ; Lost fanout                            ;
+; register_file:RF|register~195            ; Lost fanout                            ;
+; register_file:RF|register~196            ; Lost fanout                            ;
+; register_file:RF|register~197            ; Lost fanout                            ;
+; register_file:RF|register~198            ; Lost fanout                            ;
+; register_file:RF|register~199            ; Lost fanout                            ;
+; register_file:RF|register~200            ; Lost fanout                            ;
+; register_file:RF|register~201            ; Lost fanout                            ;
+; register_file:RF|register~202            ; Lost fanout                            ;
+; register_file:RF|register~203            ; Lost fanout                            ;
+; register_file:RF|register~204            ; Lost fanout                            ;
+; register_file:RF|register~205            ; Lost fanout                            ;
+; register_file:RF|register~206            ; Lost fanout                            ;
+; register_file:RF|register~207            ; Lost fanout                            ;
+; register_file:RF|register~208            ; Lost fanout                            ;
+; register_file:RF|register~209            ; Lost fanout                            ;
+; register_file:RF|register~210            ; Lost fanout                            ;
+; register_file:RF|register~211            ; Lost fanout                            ;
+; register_file:RF|register~212            ; Lost fanout                            ;
+; register_file:RF|register~213            ; Lost fanout                            ;
+; register_file:RF|register~214            ; Lost fanout                            ;
+; register_file:RF|register~215            ; Lost fanout                            ;
+; register_file:RF|register~216            ; Lost fanout                            ;
+; register_file:RF|register~217            ; Lost fanout                            ;
+; register_file:RF|register~218            ; Lost fanout                            ;
+; register_file:RF|register~219            ; Lost fanout                            ;
+; register_file:RF|register~220            ; Lost fanout                            ;
+; register_file:RF|register~221            ; Lost fanout                            ;
+; register_file:RF|register~222            ; Lost fanout                            ;
+; register_file:RF|register~223            ; Lost fanout                            ;
+; register_file:RF|register~225            ; Lost fanout                            ;
+; register_file:RF|register~226            ; Lost fanout                            ;
+; register_file:RF|register~227            ; Lost fanout                            ;
+; register_file:RF|register~228            ; Lost fanout                            ;
+; register_file:RF|register~229            ; Lost fanout                            ;
+; register_file:RF|register~230            ; Lost fanout                            ;
+; register_file:RF|register~231            ; Lost fanout                            ;
+; register_file:RF|register~232            ; Lost fanout                            ;
+; register_file:RF|register~233            ; Lost fanout                            ;
+; register_file:RF|register~234            ; Lost fanout                            ;
+; register_file:RF|register~235            ; Lost fanout                            ;
+; register_file:RF|register~236            ; Lost fanout                            ;
+; register_file:RF|register~237            ; Lost fanout                            ;
+; register_file:RF|register~238            ; Lost fanout                            ;
+; register_file:RF|register~239            ; Lost fanout                            ;
+; register_file:RF|register~240            ; Lost fanout                            ;
+; register_file:RF|register~241            ; Lost fanout                            ;
+; register_file:RF|register~242            ; Lost fanout                            ;
+; register_file:RF|register~243            ; Lost fanout                            ;
+; register_file:RF|register~244            ; Lost fanout                            ;
+; register_file:RF|register~245            ; Lost fanout                            ;
+; register_file:RF|register~246            ; Lost fanout                            ;
+; register_file:RF|register~247            ; Lost fanout                            ;
+; register_file:RF|register~248            ; Lost fanout                            ;
+; register_file:RF|register~249            ; Lost fanout                            ;
+; register_file:RF|register~250            ; Lost fanout                            ;
+; register_file:RF|register~251            ; Lost fanout                            ;
+; register_file:RF|register~252            ; Lost fanout                            ;
+; register_file:RF|register~253            ; Lost fanout                            ;
+; register_file:RF|register~254            ; Lost fanout                            ;
+; register_file:RF|register~255            ; Lost fanout                            ;
+; register_file:RF|register~257            ; Lost fanout                            ;
+; register_file:RF|register~258            ; Lost fanout                            ;
+; register_file:RF|register~259            ; Lost fanout                            ;
+; register_file:RF|register~260            ; Lost fanout                            ;
+; register_file:RF|register~261            ; Lost fanout                            ;
+; register_file:RF|register~262            ; Lost fanout                            ;
+; register_file:RF|register~263            ; Lost fanout                            ;
+; register_file:RF|register~264            ; Lost fanout                            ;
+; register_file:RF|register~265            ; Lost fanout                            ;
+; register_file:RF|register~266            ; Lost fanout                            ;
+; register_file:RF|register~267            ; Lost fanout                            ;
+; register_file:RF|register~268            ; Lost fanout                            ;
+; register_file:RF|register~269            ; Lost fanout                            ;
+; register_file:RF|register~270            ; Lost fanout                            ;
+; register_file:RF|register~271            ; Lost fanout                            ;
+; register_file:RF|register~272            ; Lost fanout                            ;
+; register_file:RF|register~273            ; Lost fanout                            ;
+; register_file:RF|register~274            ; Lost fanout                            ;
+; register_file:RF|register~275            ; Lost fanout                            ;
+; register_file:RF|register~276            ; Lost fanout                            ;
+; register_file:RF|register~277            ; Lost fanout                            ;
+; register_file:RF|register~278            ; Lost fanout                            ;
+; register_file:RF|register~279            ; Lost fanout                            ;
+; register_file:RF|register~280            ; Lost fanout                            ;
+; register_file:RF|register~281            ; Lost fanout                            ;
+; register_file:RF|register~282            ; Lost fanout                            ;
+; register_file:RF|register~283            ; Lost fanout                            ;
+; register_file:RF|register~284            ; Lost fanout                            ;
+; register_file:RF|register~285            ; Lost fanout                            ;
+; register_file:RF|register~286            ; Lost fanout                            ;
+; register_file:RF|register~287            ; Lost fanout                            ;
+; register_file:RF|register~289            ; Lost fanout                            ;
+; register_file:RF|register~290            ; Lost fanout                            ;
+; register_file:RF|register~291            ; Lost fanout                            ;
+; register_file:RF|register~292            ; Lost fanout                            ;
+; register_file:RF|register~293            ; Lost fanout                            ;
+; register_file:RF|register~294            ; Lost fanout                            ;
+; register_file:RF|register~295            ; Lost fanout                            ;
+; register_file:RF|register~296            ; Lost fanout                            ;
+; register_file:RF|register~297            ; Lost fanout                            ;
+; register_file:RF|register~298            ; Lost fanout                            ;
+; register_file:RF|register~299            ; Lost fanout                            ;
+; register_file:RF|register~300            ; Lost fanout                            ;
+; register_file:RF|register~301            ; Lost fanout                            ;
+; register_file:RF|register~302            ; Lost fanout                            ;
+; register_file:RF|register~303            ; Lost fanout                            ;
+; register_file:RF|register~304            ; Lost fanout                            ;
+; register_file:RF|register~305            ; Lost fanout                            ;
+; register_file:RF|register~306            ; Lost fanout                            ;
+; register_file:RF|register~307            ; Lost fanout                            ;
+; register_file:RF|register~308            ; Lost fanout                            ;
+; register_file:RF|register~309            ; Lost fanout                            ;
+; register_file:RF|register~310            ; Lost fanout                            ;
+; register_file:RF|register~311            ; Lost fanout                            ;
+; register_file:RF|register~312            ; Lost fanout                            ;
+; register_file:RF|register~313            ; Lost fanout                            ;
+; register_file:RF|register~314            ; Lost fanout                            ;
+; register_file:RF|register~315            ; Lost fanout                            ;
+; register_file:RF|register~316            ; Lost fanout                            ;
+; register_file:RF|register~317            ; Lost fanout                            ;
+; register_file:RF|register~318            ; Lost fanout                            ;
+; register_file:RF|register~319            ; Lost fanout                            ;
+; register_file:RF|register~321            ; Lost fanout                            ;
+; register_file:RF|register~322            ; Lost fanout                            ;
+; register_file:RF|register~323            ; Lost fanout                            ;
+; register_file:RF|register~324            ; Lost fanout                            ;
+; register_file:RF|register~325            ; Lost fanout                            ;
+; register_file:RF|register~326            ; Lost fanout                            ;
+; register_file:RF|register~327            ; Lost fanout                            ;
+; register_file:RF|register~328            ; Lost fanout                            ;
+; register_file:RF|register~329            ; Lost fanout                            ;
+; register_file:RF|register~330            ; Lost fanout                            ;
+; register_file:RF|register~331            ; Lost fanout                            ;
+; register_file:RF|register~332            ; Lost fanout                            ;
+; register_file:RF|register~333            ; Lost fanout                            ;
+; register_file:RF|register~334            ; Lost fanout                            ;
+; register_file:RF|register~335            ; Lost fanout                            ;
+; register_file:RF|register~336            ; Lost fanout                            ;
+; register_file:RF|register~337            ; Lost fanout                            ;
+; register_file:RF|register~338            ; Lost fanout                            ;
+; register_file:RF|register~339            ; Lost fanout                            ;
+; register_file:RF|register~340            ; Lost fanout                            ;
+; register_file:RF|register~341            ; Lost fanout                            ;
+; register_file:RF|register~342            ; Lost fanout                            ;
+; register_file:RF|register~343            ; Lost fanout                            ;
+; register_file:RF|register~344            ; Lost fanout                            ;
+; register_file:RF|register~345            ; Lost fanout                            ;
+; register_file:RF|register~346            ; Lost fanout                            ;
+; register_file:RF|register~347            ; Lost fanout                            ;
+; register_file:RF|register~348            ; Lost fanout                            ;
+; register_file:RF|register~349            ; Lost fanout                            ;
+; register_file:RF|register~350            ; Lost fanout                            ;
+; register_file:RF|register~351            ; Lost fanout                            ;
+; register_file:RF|register~353            ; Lost fanout                            ;
+; register_file:RF|register~354            ; Lost fanout                            ;
+; register_file:RF|register~355            ; Lost fanout                            ;
+; register_file:RF|register~356            ; Lost fanout                            ;
+; register_file:RF|register~357            ; Lost fanout                            ;
+; register_file:RF|register~358            ; Lost fanout                            ;
+; register_file:RF|register~359            ; Lost fanout                            ;
+; register_file:RF|register~360            ; Lost fanout                            ;
+; register_file:RF|register~361            ; Lost fanout                            ;
+; register_file:RF|register~362            ; Lost fanout                            ;
+; register_file:RF|register~363            ; Lost fanout                            ;
+; register_file:RF|register~364            ; Lost fanout                            ;
+; register_file:RF|register~365            ; Lost fanout                            ;
+; register_file:RF|register~366            ; Lost fanout                            ;
+; register_file:RF|register~367            ; Lost fanout                            ;
+; register_file:RF|register~368            ; Lost fanout                            ;
+; register_file:RF|register~369            ; Lost fanout                            ;
+; register_file:RF|register~370            ; Lost fanout                            ;
+; register_file:RF|register~371            ; Lost fanout                            ;
+; register_file:RF|register~372            ; Lost fanout                            ;
+; register_file:RF|register~373            ; Lost fanout                            ;
+; register_file:RF|register~374            ; Lost fanout                            ;
+; register_file:RF|register~375            ; Lost fanout                            ;
+; register_file:RF|register~376            ; Lost fanout                            ;
+; register_file:RF|register~377            ; Lost fanout                            ;
+; register_file:RF|register~378            ; Lost fanout                            ;
+; register_file:RF|register~379            ; Lost fanout                            ;
+; register_file:RF|register~380            ; Lost fanout                            ;
+; register_file:RF|register~381            ; Lost fanout                            ;
+; register_file:RF|register~382            ; Lost fanout                            ;
+; register_file:RF|register~383            ; Lost fanout                            ;
+; register_file:RF|register~385            ; Lost fanout                            ;
+; register_file:RF|register~386            ; Lost fanout                            ;
+; register_file:RF|register~387            ; Lost fanout                            ;
+; register_file:RF|register~388            ; Lost fanout                            ;
+; register_file:RF|register~389            ; Lost fanout                            ;
+; register_file:RF|register~390            ; Lost fanout                            ;
+; register_file:RF|register~391            ; Lost fanout                            ;
+; register_file:RF|register~392            ; Lost fanout                            ;
+; register_file:RF|register~393            ; Lost fanout                            ;
+; register_file:RF|register~394            ; Lost fanout                            ;
+; register_file:RF|register~395            ; Lost fanout                            ;
+; register_file:RF|register~396            ; Lost fanout                            ;
+; register_file:RF|register~397            ; Lost fanout                            ;
+; register_file:RF|register~398            ; Lost fanout                            ;
+; register_file:RF|register~399            ; Lost fanout                            ;
+; register_file:RF|register~400            ; Lost fanout                            ;
+; register_file:RF|register~401            ; Lost fanout                            ;
+; register_file:RF|register~402            ; Lost fanout                            ;
+; register_file:RF|register~403            ; Lost fanout                            ;
+; register_file:RF|register~404            ; Lost fanout                            ;
+; register_file:RF|register~405            ; Lost fanout                            ;
+; register_file:RF|register~406            ; Lost fanout                            ;
+; register_file:RF|register~407            ; Lost fanout                            ;
+; register_file:RF|register~408            ; Lost fanout                            ;
+; register_file:RF|register~409            ; Lost fanout                            ;
+; register_file:RF|register~410            ; Lost fanout                            ;
+; register_file:RF|register~411            ; Lost fanout                            ;
+; register_file:RF|register~412            ; Lost fanout                            ;
+; register_file:RF|register~413            ; Lost fanout                            ;
+; register_file:RF|register~414            ; Lost fanout                            ;
+; register_file:RF|register~415            ; Lost fanout                            ;
+; register_file:RF|register~417            ; Lost fanout                            ;
+; register_file:RF|register~418            ; Lost fanout                            ;
+; register_file:RF|register~419            ; Lost fanout                            ;
+; register_file:RF|register~420            ; Lost fanout                            ;
+; register_file:RF|register~421            ; Lost fanout                            ;
+; register_file:RF|register~422            ; Lost fanout                            ;
+; register_file:RF|register~423            ; Lost fanout                            ;
+; register_file:RF|register~424            ; Lost fanout                            ;
+; register_file:RF|register~425            ; Lost fanout                            ;
+; register_file:RF|register~426            ; Lost fanout                            ;
+; register_file:RF|register~427            ; Lost fanout                            ;
+; register_file:RF|register~428            ; Lost fanout                            ;
+; register_file:RF|register~429            ; Lost fanout                            ;
+; register_file:RF|register~430            ; Lost fanout                            ;
+; register_file:RF|register~431            ; Lost fanout                            ;
+; register_file:RF|register~432            ; Lost fanout                            ;
+; register_file:RF|register~433            ; Lost fanout                            ;
+; register_file:RF|register~434            ; Lost fanout                            ;
+; register_file:RF|register~435            ; Lost fanout                            ;
+; register_file:RF|register~436            ; Lost fanout                            ;
+; register_file:RF|register~437            ; Lost fanout                            ;
+; register_file:RF|register~438            ; Lost fanout                            ;
+; register_file:RF|register~439            ; Lost fanout                            ;
+; register_file:RF|register~440            ; Lost fanout                            ;
+; register_file:RF|register~441            ; Lost fanout                            ;
+; register_file:RF|register~442            ; Lost fanout                            ;
+; register_file:RF|register~443            ; Lost fanout                            ;
+; register_file:RF|register~444            ; Lost fanout                            ;
+; register_file:RF|register~445            ; Lost fanout                            ;
+; register_file:RF|register~446            ; Lost fanout                            ;
+; register_file:RF|register~447            ; Lost fanout                            ;
+; register_file:RF|register~449            ; Lost fanout                            ;
+; register_file:RF|register~450            ; Lost fanout                            ;
+; register_file:RF|register~451            ; Lost fanout                            ;
+; register_file:RF|register~452            ; Lost fanout                            ;
+; register_file:RF|register~453            ; Lost fanout                            ;
+; register_file:RF|register~454            ; Lost fanout                            ;
+; register_file:RF|register~455            ; Lost fanout                            ;
+; register_file:RF|register~456            ; Lost fanout                            ;
+; register_file:RF|register~457            ; Lost fanout                            ;
+; register_file:RF|register~458            ; Lost fanout                            ;
+; register_file:RF|register~459            ; Lost fanout                            ;
+; register_file:RF|register~460            ; Lost fanout                            ;
+; register_file:RF|register~461            ; Lost fanout                            ;
+; register_file:RF|register~462            ; Lost fanout                            ;
+; register_file:RF|register~463            ; Lost fanout                            ;
+; register_file:RF|register~464            ; Lost fanout                            ;
+; register_file:RF|register~465            ; Lost fanout                            ;
+; register_file:RF|register~466            ; Lost fanout                            ;
+; register_file:RF|register~467            ; Lost fanout                            ;
+; register_file:RF|register~468            ; Lost fanout                            ;
+; register_file:RF|register~469            ; Lost fanout                            ;
+; register_file:RF|register~470            ; Lost fanout                            ;
+; register_file:RF|register~471            ; Lost fanout                            ;
+; register_file:RF|register~472            ; Lost fanout                            ;
+; register_file:RF|register~473            ; Lost fanout                            ;
+; register_file:RF|register~474            ; Lost fanout                            ;
+; register_file:RF|register~475            ; Lost fanout                            ;
+; register_file:RF|register~476            ; Lost fanout                            ;
+; register_file:RF|register~477            ; Lost fanout                            ;
+; register_file:RF|register~478            ; Lost fanout                            ;
+; register_file:RF|register~479            ; Lost fanout                            ;
+; register_file:RF|register~481            ; Lost fanout                            ;
+; register_file:RF|register~482            ; Lost fanout                            ;
+; register_file:RF|register~483            ; Lost fanout                            ;
+; register_file:RF|register~484            ; Lost fanout                            ;
+; register_file:RF|register~485            ; Lost fanout                            ;
+; register_file:RF|register~486            ; Lost fanout                            ;
+; register_file:RF|register~487            ; Lost fanout                            ;
+; register_file:RF|register~488            ; Lost fanout                            ;
+; register_file:RF|register~489            ; Lost fanout                            ;
+; register_file:RF|register~490            ; Lost fanout                            ;
+; register_file:RF|register~491            ; Lost fanout                            ;
+; register_file:RF|register~492            ; Lost fanout                            ;
+; register_file:RF|register~493            ; Lost fanout                            ;
+; register_file:RF|register~494            ; Lost fanout                            ;
+; register_file:RF|register~495            ; Lost fanout                            ;
+; register_file:RF|register~496            ; Lost fanout                            ;
+; register_file:RF|register~497            ; Lost fanout                            ;
+; register_file:RF|register~498            ; Lost fanout                            ;
+; register_file:RF|register~499            ; Lost fanout                            ;
+; register_file:RF|register~500            ; Lost fanout                            ;
+; register_file:RF|register~501            ; Lost fanout                            ;
+; register_file:RF|register~502            ; Lost fanout                            ;
+; register_file:RF|register~503            ; Lost fanout                            ;
+; register_file:RF|register~504            ; Lost fanout                            ;
+; register_file:RF|register~505            ; Lost fanout                            ;
+; register_file:RF|register~506            ; Lost fanout                            ;
+; register_file:RF|register~507            ; Lost fanout                            ;
+; register_file:RF|register~508            ; Lost fanout                            ;
+; register_file:RF|register~509            ; Lost fanout                            ;
+; register_file:RF|register~510            ; Lost fanout                            ;
+; register_file:RF|register~511            ; Lost fanout                            ;
+; register_file:RF|register~513            ; Lost fanout                            ;
+; register_file:RF|register~514            ; Lost fanout                            ;
+; register_file:RF|register~515            ; Lost fanout                            ;
+; register_file:RF|register~516            ; Lost fanout                            ;
+; register_file:RF|register~517            ; Lost fanout                            ;
+; register_file:RF|register~518            ; Lost fanout                            ;
+; register_file:RF|register~519            ; Lost fanout                            ;
+; register_file:RF|register~520            ; Lost fanout                            ;
+; register_file:RF|register~521            ; Lost fanout                            ;
+; register_file:RF|register~522            ; Lost fanout                            ;
+; register_file:RF|register~523            ; Lost fanout                            ;
+; register_file:RF|register~524            ; Lost fanout                            ;
+; register_file:RF|register~525            ; Lost fanout                            ;
+; register_file:RF|register~526            ; Lost fanout                            ;
+; register_file:RF|register~527            ; Lost fanout                            ;
+; register_file:RF|register~528            ; Lost fanout                            ;
+; register_file:RF|register~529            ; Lost fanout                            ;
+; register_file:RF|register~530            ; Lost fanout                            ;
+; register_file:RF|register~531            ; Lost fanout                            ;
+; register_file:RF|register~532            ; Lost fanout                            ;
+; register_file:RF|register~533            ; Lost fanout                            ;
+; register_file:RF|register~534            ; Lost fanout                            ;
+; register_file:RF|register~535            ; Lost fanout                            ;
+; register_file:RF|register~536            ; Lost fanout                            ;
+; register_file:RF|register~537            ; Lost fanout                            ;
+; register_file:RF|register~538            ; Lost fanout                            ;
+; register_file:RF|register~539            ; Lost fanout                            ;
+; register_file:RF|register~540            ; Lost fanout                            ;
+; register_file:RF|register~541            ; Lost fanout                            ;
+; register_file:RF|register~542            ; Lost fanout                            ;
+; register_file:RF|register~543            ; Lost fanout                            ;
+; register_file:RF|register~545            ; Lost fanout                            ;
+; register_file:RF|register~546            ; Lost fanout                            ;
+; register_file:RF|register~547            ; Lost fanout                            ;
+; register_file:RF|register~548            ; Lost fanout                            ;
+; register_file:RF|register~549            ; Lost fanout                            ;
+; register_file:RF|register~550            ; Lost fanout                            ;
+; register_file:RF|register~551            ; Lost fanout                            ;
+; register_file:RF|register~552            ; Lost fanout                            ;
+; register_file:RF|register~553            ; Lost fanout                            ;
+; register_file:RF|register~554            ; Lost fanout                            ;
+; register_file:RF|register~555            ; Lost fanout                            ;
+; register_file:RF|register~556            ; Lost fanout                            ;
+; register_file:RF|register~557            ; Lost fanout                            ;
+; register_file:RF|register~558            ; Lost fanout                            ;
+; register_file:RF|register~559            ; Lost fanout                            ;
+; register_file:RF|register~560            ; Lost fanout                            ;
+; register_file:RF|register~561            ; Lost fanout                            ;
+; register_file:RF|register~562            ; Lost fanout                            ;
+; register_file:RF|register~563            ; Lost fanout                            ;
+; register_file:RF|register~564            ; Lost fanout                            ;
+; register_file:RF|register~565            ; Lost fanout                            ;
+; register_file:RF|register~566            ; Lost fanout                            ;
+; register_file:RF|register~567            ; Lost fanout                            ;
+; register_file:RF|register~568            ; Lost fanout                            ;
+; register_file:RF|register~569            ; Lost fanout                            ;
+; register_file:RF|register~570            ; Lost fanout                            ;
+; register_file:RF|register~571            ; Lost fanout                            ;
+; register_file:RF|register~572            ; Lost fanout                            ;
+; register_file:RF|register~573            ; Lost fanout                            ;
+; register_file:RF|register~574            ; Lost fanout                            ;
+; register_file:RF|register~575            ; Lost fanout                            ;
+; register_file:RF|register~577            ; Lost fanout                            ;
+; register_file:RF|register~578            ; Lost fanout                            ;
+; register_file:RF|register~579            ; Lost fanout                            ;
+; register_file:RF|register~580            ; Lost fanout                            ;
+; register_file:RF|register~581            ; Lost fanout                            ;
+; register_file:RF|register~582            ; Lost fanout                            ;
+; register_file:RF|register~583            ; Lost fanout                            ;
+; register_file:RF|register~584            ; Lost fanout                            ;
+; register_file:RF|register~585            ; Lost fanout                            ;
+; register_file:RF|register~586            ; Lost fanout                            ;
+; register_file:RF|register~587            ; Lost fanout                            ;
+; register_file:RF|register~588            ; Lost fanout                            ;
+; register_file:RF|register~589            ; Lost fanout                            ;
+; register_file:RF|register~590            ; Lost fanout                            ;
+; register_file:RF|register~591            ; Lost fanout                            ;
+; register_file:RF|register~592            ; Lost fanout                            ;
+; register_file:RF|register~593            ; Lost fanout                            ;
+; register_file:RF|register~594            ; Lost fanout                            ;
+; register_file:RF|register~595            ; Lost fanout                            ;
+; register_file:RF|register~596            ; Lost fanout                            ;
+; register_file:RF|register~597            ; Lost fanout                            ;
+; register_file:RF|register~598            ; Lost fanout                            ;
+; register_file:RF|register~599            ; Lost fanout                            ;
+; register_file:RF|register~600            ; Lost fanout                            ;
+; register_file:RF|register~601            ; Lost fanout                            ;
+; register_file:RF|register~602            ; Lost fanout                            ;
+; register_file:RF|register~603            ; Lost fanout                            ;
+; register_file:RF|register~604            ; Lost fanout                            ;
+; register_file:RF|register~605            ; Lost fanout                            ;
+; register_file:RF|register~606            ; Lost fanout                            ;
+; register_file:RF|register~607            ; Lost fanout                            ;
+; register_file:RF|register~609            ; Lost fanout                            ;
+; register_file:RF|register~610            ; Lost fanout                            ;
+; register_file:RF|register~611            ; Lost fanout                            ;
+; register_file:RF|register~612            ; Lost fanout                            ;
+; register_file:RF|register~613            ; Lost fanout                            ;
+; register_file:RF|register~614            ; Lost fanout                            ;
+; register_file:RF|register~615            ; Lost fanout                            ;
+; register_file:RF|register~616            ; Lost fanout                            ;
+; register_file:RF|register~617            ; Lost fanout                            ;
+; register_file:RF|register~618            ; Lost fanout                            ;
+; register_file:RF|register~619            ; Lost fanout                            ;
+; register_file:RF|register~620            ; Lost fanout                            ;
+; register_file:RF|register~621            ; Lost fanout                            ;
+; register_file:RF|register~622            ; Lost fanout                            ;
+; register_file:RF|register~623            ; Lost fanout                            ;
+; register_file:RF|register~624            ; Lost fanout                            ;
+; register_file:RF|register~625            ; Lost fanout                            ;
+; register_file:RF|register~626            ; Lost fanout                            ;
+; register_file:RF|register~627            ; Lost fanout                            ;
+; register_file:RF|register~628            ; Lost fanout                            ;
+; register_file:RF|register~629            ; Lost fanout                            ;
+; register_file:RF|register~630            ; Lost fanout                            ;
+; register_file:RF|register~631            ; Lost fanout                            ;
+; register_file:RF|register~632            ; Lost fanout                            ;
+; register_file:RF|register~633            ; Lost fanout                            ;
+; register_file:RF|register~634            ; Lost fanout                            ;
+; register_file:RF|register~635            ; Lost fanout                            ;
+; register_file:RF|register~636            ; Lost fanout                            ;
+; register_file:RF|register~637            ; Lost fanout                            ;
+; register_file:RF|register~638            ; Lost fanout                            ;
+; register_file:RF|register~639            ; Lost fanout                            ;
+; register_file:RF|register~641            ; Lost fanout                            ;
+; register_file:RF|register~642            ; Lost fanout                            ;
+; register_file:RF|register~643            ; Lost fanout                            ;
+; register_file:RF|register~644            ; Lost fanout                            ;
+; register_file:RF|register~645            ; Lost fanout                            ;
+; register_file:RF|register~646            ; Lost fanout                            ;
+; register_file:RF|register~647            ; Lost fanout                            ;
+; register_file:RF|register~648            ; Lost fanout                            ;
+; register_file:RF|register~649            ; Lost fanout                            ;
+; register_file:RF|register~650            ; Lost fanout                            ;
+; register_file:RF|register~651            ; Lost fanout                            ;
+; register_file:RF|register~652            ; Lost fanout                            ;
+; register_file:RF|register~653            ; Lost fanout                            ;
+; register_file:RF|register~654            ; Lost fanout                            ;
+; register_file:RF|register~655            ; Lost fanout                            ;
+; register_file:RF|register~656            ; Lost fanout                            ;
+; register_file:RF|register~657            ; Lost fanout                            ;
+; register_file:RF|register~658            ; Lost fanout                            ;
+; register_file:RF|register~659            ; Lost fanout                            ;
+; register_file:RF|register~660            ; Lost fanout                            ;
+; register_file:RF|register~661            ; Lost fanout                            ;
+; register_file:RF|register~662            ; Lost fanout                            ;
+; register_file:RF|register~663            ; Lost fanout                            ;
+; register_file:RF|register~664            ; Lost fanout                            ;
+; register_file:RF|register~665            ; Lost fanout                            ;
+; register_file:RF|register~666            ; Lost fanout                            ;
+; register_file:RF|register~667            ; Lost fanout                            ;
+; register_file:RF|register~668            ; Lost fanout                            ;
+; register_file:RF|register~669            ; Lost fanout                            ;
+; register_file:RF|register~670            ; Lost fanout                            ;
+; register_file:RF|register~671            ; Lost fanout                            ;
+; register_file:RF|register~673            ; Lost fanout                            ;
+; register_file:RF|register~674            ; Lost fanout                            ;
+; register_file:RF|register~675            ; Lost fanout                            ;
+; register_file:RF|register~676            ; Lost fanout                            ;
+; register_file:RF|register~677            ; Lost fanout                            ;
+; register_file:RF|register~678            ; Lost fanout                            ;
+; register_file:RF|register~679            ; Lost fanout                            ;
+; register_file:RF|register~680            ; Lost fanout                            ;
+; register_file:RF|register~681            ; Lost fanout                            ;
+; register_file:RF|register~682            ; Lost fanout                            ;
+; register_file:RF|register~683            ; Lost fanout                            ;
+; register_file:RF|register~684            ; Lost fanout                            ;
+; register_file:RF|register~685            ; Lost fanout                            ;
+; register_file:RF|register~686            ; Lost fanout                            ;
+; register_file:RF|register~687            ; Lost fanout                            ;
+; register_file:RF|register~688            ; Lost fanout                            ;
+; register_file:RF|register~689            ; Lost fanout                            ;
+; register_file:RF|register~690            ; Lost fanout                            ;
+; register_file:RF|register~691            ; Lost fanout                            ;
+; register_file:RF|register~692            ; Lost fanout                            ;
+; register_file:RF|register~693            ; Lost fanout                            ;
+; register_file:RF|register~694            ; Lost fanout                            ;
+; register_file:RF|register~695            ; Lost fanout                            ;
+; register_file:RF|register~696            ; Lost fanout                            ;
+; register_file:RF|register~697            ; Lost fanout                            ;
+; register_file:RF|register~698            ; Lost fanout                            ;
+; register_file:RF|register~699            ; Lost fanout                            ;
+; register_file:RF|register~700            ; Lost fanout                            ;
+; register_file:RF|register~701            ; Lost fanout                            ;
+; register_file:RF|register~702            ; Lost fanout                            ;
+; register_file:RF|register~703            ; Lost fanout                            ;
+; register_file:RF|register~705            ; Lost fanout                            ;
+; register_file:RF|register~706            ; Lost fanout                            ;
+; register_file:RF|register~707            ; Lost fanout                            ;
+; register_file:RF|register~708            ; Lost fanout                            ;
+; register_file:RF|register~709            ; Lost fanout                            ;
+; register_file:RF|register~710            ; Lost fanout                            ;
+; register_file:RF|register~711            ; Lost fanout                            ;
+; register_file:RF|register~712            ; Lost fanout                            ;
+; register_file:RF|register~713            ; Lost fanout                            ;
+; register_file:RF|register~714            ; Lost fanout                            ;
+; register_file:RF|register~715            ; Lost fanout                            ;
+; register_file:RF|register~716            ; Lost fanout                            ;
+; register_file:RF|register~717            ; Lost fanout                            ;
+; register_file:RF|register~718            ; Lost fanout                            ;
+; register_file:RF|register~719            ; Lost fanout                            ;
+; register_file:RF|register~720            ; Lost fanout                            ;
+; register_file:RF|register~721            ; Lost fanout                            ;
+; register_file:RF|register~722            ; Lost fanout                            ;
+; register_file:RF|register~723            ; Lost fanout                            ;
+; register_file:RF|register~724            ; Lost fanout                            ;
+; register_file:RF|register~725            ; Lost fanout                            ;
+; register_file:RF|register~726            ; Lost fanout                            ;
+; register_file:RF|register~727            ; Lost fanout                            ;
+; register_file:RF|register~728            ; Lost fanout                            ;
+; register_file:RF|register~729            ; Lost fanout                            ;
+; register_file:RF|register~730            ; Lost fanout                            ;
+; register_file:RF|register~731            ; Lost fanout                            ;
+; register_file:RF|register~732            ; Lost fanout                            ;
+; register_file:RF|register~733            ; Lost fanout                            ;
+; register_file:RF|register~734            ; Lost fanout                            ;
+; register_file:RF|register~735            ; Lost fanout                            ;
+; register_file:RF|register~737            ; Lost fanout                            ;
+; register_file:RF|register~738            ; Lost fanout                            ;
+; register_file:RF|register~739            ; Lost fanout                            ;
+; register_file:RF|register~740            ; Lost fanout                            ;
+; register_file:RF|register~741            ; Lost fanout                            ;
+; register_file:RF|register~742            ; Lost fanout                            ;
+; register_file:RF|register~743            ; Lost fanout                            ;
+; register_file:RF|register~744            ; Lost fanout                            ;
+; register_file:RF|register~745            ; Lost fanout                            ;
+; register_file:RF|register~746            ; Lost fanout                            ;
+; register_file:RF|register~747            ; Lost fanout                            ;
+; register_file:RF|register~748            ; Lost fanout                            ;
+; register_file:RF|register~749            ; Lost fanout                            ;
+; register_file:RF|register~750            ; Lost fanout                            ;
+; register_file:RF|register~751            ; Lost fanout                            ;
+; register_file:RF|register~752            ; Lost fanout                            ;
+; register_file:RF|register~753            ; Lost fanout                            ;
+; register_file:RF|register~754            ; Lost fanout                            ;
+; register_file:RF|register~755            ; Lost fanout                            ;
+; register_file:RF|register~756            ; Lost fanout                            ;
+; register_file:RF|register~757            ; Lost fanout                            ;
+; register_file:RF|register~758            ; Lost fanout                            ;
+; register_file:RF|register~759            ; Lost fanout                            ;
+; register_file:RF|register~760            ; Lost fanout                            ;
+; register_file:RF|register~761            ; Lost fanout                            ;
+; register_file:RF|register~762            ; Lost fanout                            ;
+; register_file:RF|register~763            ; Lost fanout                            ;
+; register_file:RF|register~764            ; Lost fanout                            ;
+; register_file:RF|register~765            ; Lost fanout                            ;
+; register_file:RF|register~766            ; Lost fanout                            ;
+; register_file:RF|register~767            ; Lost fanout                            ;
+; register_file:RF|register~769            ; Lost fanout                            ;
+; register_file:RF|register~770            ; Lost fanout                            ;
+; register_file:RF|register~771            ; Lost fanout                            ;
+; register_file:RF|register~772            ; Lost fanout                            ;
+; register_file:RF|register~773            ; Lost fanout                            ;
+; register_file:RF|register~774            ; Lost fanout                            ;
+; register_file:RF|register~775            ; Lost fanout                            ;
+; register_file:RF|register~776            ; Lost fanout                            ;
+; register_file:RF|register~777            ; Lost fanout                            ;
+; register_file:RF|register~778            ; Lost fanout                            ;
+; register_file:RF|register~779            ; Lost fanout                            ;
+; register_file:RF|register~780            ; Lost fanout                            ;
+; register_file:RF|register~781            ; Lost fanout                            ;
+; register_file:RF|register~782            ; Lost fanout                            ;
+; register_file:RF|register~783            ; Lost fanout                            ;
+; register_file:RF|register~784            ; Lost fanout                            ;
+; register_file:RF|register~785            ; Lost fanout                            ;
+; register_file:RF|register~786            ; Lost fanout                            ;
+; register_file:RF|register~787            ; Lost fanout                            ;
+; register_file:RF|register~788            ; Lost fanout                            ;
+; register_file:RF|register~789            ; Lost fanout                            ;
+; register_file:RF|register~790            ; Lost fanout                            ;
+; register_file:RF|register~791            ; Lost fanout                            ;
+; register_file:RF|register~792            ; Lost fanout                            ;
+; register_file:RF|register~793            ; Lost fanout                            ;
+; register_file:RF|register~794            ; Lost fanout                            ;
+; register_file:RF|register~795            ; Lost fanout                            ;
+; register_file:RF|register~796            ; Lost fanout                            ;
+; register_file:RF|register~797            ; Lost fanout                            ;
+; register_file:RF|register~798            ; Lost fanout                            ;
+; register_file:RF|register~799            ; Lost fanout                            ;
+; register_file:RF|register~801            ; Lost fanout                            ;
+; register_file:RF|register~802            ; Lost fanout                            ;
+; register_file:RF|register~803            ; Lost fanout                            ;
+; register_file:RF|register~804            ; Lost fanout                            ;
+; register_file:RF|register~805            ; Lost fanout                            ;
+; register_file:RF|register~806            ; Lost fanout                            ;
+; register_file:RF|register~807            ; Lost fanout                            ;
+; register_file:RF|register~808            ; Lost fanout                            ;
+; register_file:RF|register~809            ; Lost fanout                            ;
+; register_file:RF|register~810            ; Lost fanout                            ;
+; register_file:RF|register~811            ; Lost fanout                            ;
+; register_file:RF|register~812            ; Lost fanout                            ;
+; register_file:RF|register~813            ; Lost fanout                            ;
+; register_file:RF|register~814            ; Lost fanout                            ;
+; register_file:RF|register~815            ; Lost fanout                            ;
+; register_file:RF|register~816            ; Lost fanout                            ;
+; register_file:RF|register~817            ; Lost fanout                            ;
+; register_file:RF|register~818            ; Lost fanout                            ;
+; register_file:RF|register~819            ; Lost fanout                            ;
+; register_file:RF|register~820            ; Lost fanout                            ;
+; register_file:RF|register~821            ; Lost fanout                            ;
+; register_file:RF|register~822            ; Lost fanout                            ;
+; register_file:RF|register~823            ; Lost fanout                            ;
+; register_file:RF|register~824            ; Lost fanout                            ;
+; register_file:RF|register~825            ; Lost fanout                            ;
+; register_file:RF|register~826            ; Lost fanout                            ;
+; register_file:RF|register~827            ; Lost fanout                            ;
+; register_file:RF|register~828            ; Lost fanout                            ;
+; register_file:RF|register~829            ; Lost fanout                            ;
+; register_file:RF|register~830            ; Lost fanout                            ;
+; register_file:RF|register~831            ; Lost fanout                            ;
+; register_file:RF|register~833            ; Lost fanout                            ;
+; register_file:RF|register~834            ; Lost fanout                            ;
+; register_file:RF|register~835            ; Lost fanout                            ;
+; register_file:RF|register~836            ; Lost fanout                            ;
+; register_file:RF|register~837            ; Lost fanout                            ;
+; register_file:RF|register~838            ; Lost fanout                            ;
+; register_file:RF|register~839            ; Lost fanout                            ;
+; register_file:RF|register~840            ; Lost fanout                            ;
+; register_file:RF|register~841            ; Lost fanout                            ;
+; register_file:RF|register~842            ; Lost fanout                            ;
+; register_file:RF|register~843            ; Lost fanout                            ;
+; register_file:RF|register~844            ; Lost fanout                            ;
+; register_file:RF|register~845            ; Lost fanout                            ;
+; register_file:RF|register~846            ; Lost fanout                            ;
+; register_file:RF|register~847            ; Lost fanout                            ;
+; register_file:RF|register~848            ; Lost fanout                            ;
+; register_file:RF|register~849            ; Lost fanout                            ;
+; register_file:RF|register~850            ; Lost fanout                            ;
+; register_file:RF|register~851            ; Lost fanout                            ;
+; register_file:RF|register~852            ; Lost fanout                            ;
+; register_file:RF|register~853            ; Lost fanout                            ;
+; register_file:RF|register~854            ; Lost fanout                            ;
+; register_file:RF|register~855            ; Lost fanout                            ;
+; register_file:RF|register~856            ; Lost fanout                            ;
+; register_file:RF|register~857            ; Lost fanout                            ;
+; register_file:RF|register~858            ; Lost fanout                            ;
+; register_file:RF|register~859            ; Lost fanout                            ;
+; register_file:RF|register~860            ; Lost fanout                            ;
+; register_file:RF|register~861            ; Lost fanout                            ;
+; register_file:RF|register~862            ; Lost fanout                            ;
+; register_file:RF|register~863            ; Lost fanout                            ;
+; register_file:RF|register~865            ; Lost fanout                            ;
+; register_file:RF|register~866            ; Lost fanout                            ;
+; register_file:RF|register~867            ; Lost fanout                            ;
+; register_file:RF|register~868            ; Lost fanout                            ;
+; register_file:RF|register~869            ; Lost fanout                            ;
+; register_file:RF|register~870            ; Lost fanout                            ;
+; register_file:RF|register~871            ; Lost fanout                            ;
+; register_file:RF|register~872            ; Lost fanout                            ;
+; register_file:RF|register~873            ; Lost fanout                            ;
+; register_file:RF|register~874            ; Lost fanout                            ;
+; register_file:RF|register~875            ; Lost fanout                            ;
+; register_file:RF|register~876            ; Lost fanout                            ;
+; register_file:RF|register~877            ; Lost fanout                            ;
+; register_file:RF|register~878            ; Lost fanout                            ;
+; register_file:RF|register~879            ; Lost fanout                            ;
+; register_file:RF|register~880            ; Lost fanout                            ;
+; register_file:RF|register~881            ; Lost fanout                            ;
+; register_file:RF|register~882            ; Lost fanout                            ;
+; register_file:RF|register~883            ; Lost fanout                            ;
+; register_file:RF|register~884            ; Lost fanout                            ;
+; register_file:RF|register~885            ; Lost fanout                            ;
+; register_file:RF|register~886            ; Lost fanout                            ;
+; register_file:RF|register~887            ; Lost fanout                            ;
+; register_file:RF|register~888            ; Lost fanout                            ;
+; register_file:RF|register~889            ; Lost fanout                            ;
+; register_file:RF|register~890            ; Lost fanout                            ;
+; register_file:RF|register~891            ; Lost fanout                            ;
+; register_file:RF|register~892            ; Lost fanout                            ;
+; register_file:RF|register~893            ; Lost fanout                            ;
+; register_file:RF|register~894            ; Lost fanout                            ;
+; register_file:RF|register~895            ; Lost fanout                            ;
+; register_file:RF|register~897            ; Lost fanout                            ;
+; register_file:RF|register~898            ; Lost fanout                            ;
+; register_file:RF|register~899            ; Lost fanout                            ;
+; register_file:RF|register~900            ; Lost fanout                            ;
+; register_file:RF|register~901            ; Lost fanout                            ;
+; register_file:RF|register~902            ; Lost fanout                            ;
+; register_file:RF|register~903            ; Lost fanout                            ;
+; register_file:RF|register~904            ; Lost fanout                            ;
+; register_file:RF|register~905            ; Lost fanout                            ;
+; register_file:RF|register~906            ; Lost fanout                            ;
+; register_file:RF|register~907            ; Lost fanout                            ;
+; register_file:RF|register~908            ; Lost fanout                            ;
+; register_file:RF|register~909            ; Lost fanout                            ;
+; register_file:RF|register~910            ; Lost fanout                            ;
+; register_file:RF|register~911            ; Lost fanout                            ;
+; register_file:RF|register~912            ; Lost fanout                            ;
+; register_file:RF|register~913            ; Lost fanout                            ;
+; register_file:RF|register~914            ; Lost fanout                            ;
+; register_file:RF|register~915            ; Lost fanout                            ;
+; register_file:RF|register~916            ; Lost fanout                            ;
+; register_file:RF|register~917            ; Lost fanout                            ;
+; register_file:RF|register~918            ; Lost fanout                            ;
+; register_file:RF|register~919            ; Lost fanout                            ;
+; register_file:RF|register~920            ; Lost fanout                            ;
+; register_file:RF|register~921            ; Lost fanout                            ;
+; register_file:RF|register~922            ; Lost fanout                            ;
+; register_file:RF|register~923            ; Lost fanout                            ;
+; register_file:RF|register~924            ; Lost fanout                            ;
+; register_file:RF|register~925            ; Lost fanout                            ;
+; register_file:RF|register~926            ; Lost fanout                            ;
+; register_file:RF|register~927            ; Lost fanout                            ;
+; register_file:RF|register~929            ; Lost fanout                            ;
+; register_file:RF|register~930            ; Lost fanout                            ;
+; register_file:RF|register~931            ; Lost fanout                            ;
+; register_file:RF|register~932            ; Lost fanout                            ;
+; register_file:RF|register~933            ; Lost fanout                            ;
+; register_file:RF|register~934            ; Lost fanout                            ;
+; register_file:RF|register~935            ; Lost fanout                            ;
+; register_file:RF|register~936            ; Lost fanout                            ;
+; register_file:RF|register~937            ; Lost fanout                            ;
+; register_file:RF|register~938            ; Lost fanout                            ;
+; register_file:RF|register~939            ; Lost fanout                            ;
+; register_file:RF|register~940            ; Lost fanout                            ;
+; register_file:RF|register~941            ; Lost fanout                            ;
+; register_file:RF|register~942            ; Lost fanout                            ;
+; register_file:RF|register~943            ; Lost fanout                            ;
+; register_file:RF|register~944            ; Lost fanout                            ;
+; register_file:RF|register~945            ; Lost fanout                            ;
+; register_file:RF|register~946            ; Lost fanout                            ;
+; register_file:RF|register~947            ; Lost fanout                            ;
+; register_file:RF|register~948            ; Lost fanout                            ;
+; register_file:RF|register~949            ; Lost fanout                            ;
+; register_file:RF|register~950            ; Lost fanout                            ;
+; register_file:RF|register~951            ; Lost fanout                            ;
+; register_file:RF|register~952            ; Lost fanout                            ;
+; register_file:RF|register~953            ; Lost fanout                            ;
+; register_file:RF|register~954            ; Lost fanout                            ;
+; register_file:RF|register~955            ; Lost fanout                            ;
+; register_file:RF|register~956            ; Lost fanout                            ;
+; register_file:RF|register~957            ; Lost fanout                            ;
+; register_file:RF|register~958            ; Lost fanout                            ;
+; register_file:RF|register~959            ; Lost fanout                            ;
+; register_file:RF|register~961            ; Lost fanout                            ;
+; register_file:RF|register~962            ; Lost fanout                            ;
+; register_file:RF|register~963            ; Lost fanout                            ;
+; register_file:RF|register~964            ; Lost fanout                            ;
+; register_file:RF|register~965            ; Lost fanout                            ;
+; register_file:RF|register~966            ; Lost fanout                            ;
+; register_file:RF|register~967            ; Lost fanout                            ;
+; register_file:RF|register~968            ; Lost fanout                            ;
+; register_file:RF|register~969            ; Lost fanout                            ;
+; register_file:RF|register~970            ; Lost fanout                            ;
+; register_file:RF|register~971            ; Lost fanout                            ;
+; register_file:RF|register~972            ; Lost fanout                            ;
+; register_file:RF|register~973            ; Lost fanout                            ;
+; register_file:RF|register~974            ; Lost fanout                            ;
+; register_file:RF|register~975            ; Lost fanout                            ;
+; register_file:RF|register~976            ; Lost fanout                            ;
+; register_file:RF|register~977            ; Lost fanout                            ;
+; register_file:RF|register~978            ; Lost fanout                            ;
+; register_file:RF|register~979            ; Lost fanout                            ;
+; register_file:RF|register~980            ; Lost fanout                            ;
+; register_file:RF|register~981            ; Lost fanout                            ;
+; register_file:RF|register~982            ; Lost fanout                            ;
+; register_file:RF|register~983            ; Lost fanout                            ;
+; register_file:RF|register~984            ; Lost fanout                            ;
+; register_file:RF|register~985            ; Lost fanout                            ;
+; register_file:RF|register~986            ; Lost fanout                            ;
+; register_file:RF|register~987            ; Lost fanout                            ;
+; register_file:RF|register~988            ; Lost fanout                            ;
+; register_file:RF|register~989            ; Lost fanout                            ;
+; register_file:RF|register~990            ; Lost fanout                            ;
+; register_file:RF|register~991            ; Lost fanout                            ;
+; register_file:RF|register~993            ; Lost fanout                            ;
+; register_file:RF|register~994            ; Lost fanout                            ;
+; register_file:RF|register~995            ; Lost fanout                            ;
+; register_file:RF|register~996            ; Lost fanout                            ;
+; register_file:RF|register~997            ; Lost fanout                            ;
+; register_file:RF|register~998            ; Lost fanout                            ;
+; register_file:RF|register~999            ; Lost fanout                            ;
+; register_file:RF|register~1000           ; Lost fanout                            ;
+; register_file:RF|register~1001           ; Lost fanout                            ;
+; register_file:RF|register~1002           ; Lost fanout                            ;
+; register_file:RF|register~1003           ; Lost fanout                            ;
+; register_file:RF|register~1004           ; Lost fanout                            ;
+; register_file:RF|register~1005           ; Lost fanout                            ;
+; register_file:RF|register~1006           ; Lost fanout                            ;
+; register_file:RF|register~1007           ; Lost fanout                            ;
+; register_file:RF|register~1008           ; Lost fanout                            ;
+; register_file:RF|register~1009           ; Lost fanout                            ;
+; register_file:RF|register~1010           ; Lost fanout                            ;
+; register_file:RF|register~1011           ; Lost fanout                            ;
+; register_file:RF|register~1012           ; Lost fanout                            ;
+; register_file:RF|register~1013           ; Lost fanout                            ;
+; register_file:RF|register~1014           ; Lost fanout                            ;
+; register_file:RF|register~1015           ; Lost fanout                            ;
+; register_file:RF|register~1016           ; Lost fanout                            ;
+; register_file:RF|register~1017           ; Lost fanout                            ;
+; register_file:RF|register~1018           ; Lost fanout                            ;
+; register_file:RF|register~1019           ; Lost fanout                            ;
+; register_file:RF|register~1020           ; Lost fanout                            ;
+; register_file:RF|register~1021           ; Lost fanout                            ;
+; register_file:RF|register~1022           ; Lost fanout                            ;
+; register_file:RF|register~1023           ; Lost fanout                            ;
+; register_file:RF|register~0              ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~32             ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~64             ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~96             ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~128            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~160            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~192            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~224            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~256            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~288            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~320            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~352            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~384            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~416            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~448            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~480            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~512            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~544            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~576            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~608            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~640            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~672            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~704            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~736            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~768            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~800            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~832            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~864            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~896            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~928            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~960            ; Stuck at GND due to stuck port data_in ;
+; register_file:RF|register~992            ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 1024 ;                                        ;
++------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: para_mux2to1:ALU_second_src_mux ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: alu:ALU|adder_32bit:ALU_adder ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; CARRY_IN_0     ; 0     ; Unsigned Binary                                   ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: alu:ALU|adder_32bit:substractor_32bit ;
++----------------+-------+-----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                      ;
++----------------+-------+-----------------------------------------------------------+
+; CARRY_IN_0     ; 1     ; Unsigned Binary                                           ;
++----------------+-------+-----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:SLT_mux ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:mux_L1_0 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:mux_L1_1 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:mux_L1_2 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:mux_L1_3 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:mux_L2_0 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:mux_L2_1 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: alu:ALU|para_mux2to1:mux_L3_FINAL ;
++----------------+-------+-------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                  ;
++----------------+-------+-------------------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                                        ;
++----------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "alu:ALU|para_mux2to1:mux_L1_3"                                                                                                                    ;
++--------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                                                                                                          ;
++--------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; inputB ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "inputB[31..1]" will be connected to GND. ;
++--------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "alu:ALU|para_mux2to1:SLT_mux"                                                                 ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                             ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; inputA         ; Input  ; Info     ; Stuck at GND                                                                        ;
+; inputB[31..1]  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; inputB[0]      ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; outputY[31..1] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "alu:ALU|adder_32bit:substractor_32bit|full_adder:concat_full_adder[0].generate_full_adder" ;
++----------+-------+----------+-----------------------------------------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                                                                 ;
++----------+-------+----------+-----------------------------------------------------------------------------------------+
+; carry_in ; Input ; Info     ; Stuck at VCC                                                                            ;
++----------+-------+----------+-----------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "alu:ALU|adder_32bit:substractor_32bit"                                                   ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; carry_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[0].generate_full_adder" ;
++----------+-------+----------+---------------------------------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                                                         ;
++----------+-------+----------+---------------------------------------------------------------------------------+
+; carry_in ; Input ; Info     ; Stuck at GND                                                                    ;
++----------+-------+----------+---------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "alu:ALU|adder_32bit:ALU_adder"                                                           ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; carry_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "alu:ALU"                                                                            ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; zero ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_lcell_comb     ; 15                          ;
+;     normal            ; 15                          ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 2                           ;
+;         3 data inputs ; 4                           ;
+;         4 data inputs ; 1                           ;
+;         5 data inputs ; 4                           ;
+;         6 data inputs ; 3                           ;
+; boundary_port         ; 98                          ;
+;                       ;                             ;
+; Max LUT depth         ; 3.00                        ;
+; Average LUT depth     ; 2.06                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
 
 
 +-------------------------------+
@@ -161,41 +1521,193 @@ on the Quartus Prime software download page.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Tue Nov 25 20:32:55 2025
+    Info: Processing started: Sat Dec  6 17:47:39 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Assignment2_GTU_CSE331 -c Assignment2_GTU_CSE331
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file para_mux2to1.v
+    Info (12023): Found entity 1: para_mux2to1 File: /home/kaz/Documents/Quartus_Projects/para_mux2to1.v Line: 1
+Info (12021): Found 3 design units, including 3 entities, in source file adder.v
+    Info (12023): Found entity 1: half_adder File: /home/kaz/Documents/Quartus_Projects/adder.v Line: 1
+    Info (12023): Found entity 2: full_adder File: /home/kaz/Documents/Quartus_Projects/adder.v Line: 13
+    Info (12023): Found entity 3: adder_32bit File: /home/kaz/Documents/Quartus_Projects/adder.v Line: 38
+Info (12021): Found 1 design units, including 1 entities, in source file mips_single_cycle_datapath.v
+    Info (12023): Found entity 1: mips_single_cycle_datapath File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file mux2to1_1bit.v
-    Info (12023): Found entity 1: mux2to1_1bit File: /home/kaz/Documents/Quartus_Projects/mux2to1_1bit.v Line: 1
+    Info (12023): Found entity 1: mux2to1 File: /home/kaz/Documents/Quartus_Projects/mux2to1_1bit.v Line: 5
 Info (12021): Found 1 design units, including 1 entities, in source file control_unit.v
     Info (12023): Found entity 1: control_unit File: /home/kaz/Documents/Quartus_Projects/control_unit.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file alu_control.v
     Info (12023): Found entity 1: alu_control File: /home/kaz/Documents/Quartus_Projects/alu_control.v Line: 1
-Info (12021): Found 12 design units, including 12 entities, in source file alu.v
+Info (12021): Found 1 design units, including 1 entities, in source file alu.v
     Info (12023): Found entity 1: alu File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 1
-    Info (12023): Found entity 2: full_adder File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 104
-    Info (12023): Found entity 3: ripple_adder32 File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 126
-    Info (12023): Found entity 4: bitwise_and32 File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 165
-    Info (12023): Found entity 5: bitwise_or32 File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 180
-    Info (12023): Found entity 6: bitwise_nor32 File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 195
-    Info (12023): Found entity 7: bitwise_not32 File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 210
-    Info (12023): Found entity 8: slt_compare File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 224
-    Info (12023): Found entity 9: slt_vector32 File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 256
-    Info (12023): Found entity 10: mux2 File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 272
-    Info (12023): Found entity 11: mux16 File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 295
-    Info (12023): Found entity 12: zero_detector32 File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 354
 Info (12021): Found 1 design units, including 1 entities, in source file mux2to1_5bit.v
     Info (12023): Found entity 1: mux2to1_5bit File: /home/kaz/Documents/Quartus_Projects/mux2to1_5bit.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file sign_extender.v
     Info (12023): Found entity 1: sign_extender File: /home/kaz/Documents/Quartus_Projects/sign_extender.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file register_file.v
     Info (12023): Found entity 1: register_file File: /home/kaz/Documents/Quartus_Projects/register_file.v Line: 1
-Error (10137): Verilog HDL Procedural Assignment error at mux2to1_1bit.v(10): object "out" on left-hand side of assignment must have a variable data type File: /home/kaz/Documents/Quartus_Projects/mux2to1_1bit.v Line: 10
-Error (10137): Verilog HDL Procedural Assignment error at mux2to1_1bit.v(12): object "out" on left-hand side of assignment must have a variable data type File: /home/kaz/Documents/Quartus_Projects/mux2to1_1bit.v Line: 12
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 1 warning
-    Error: Peak virtual memory: 401 megabytes
-    Error: Processing ended: Tue Nov 25 20:32:59 2025
-    Error: Elapsed time: 00:00:04
-    Error: Total CPU time (on all processors): 00:00:09
+Warning (10236): Verilog HDL Implicit Net warning at alu.v(58): created implicit net for "SLT_MUX_SEL" File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 58
+Warning (10236): Verilog HDL Implicit Net warning at alu.v(70): created implicit net for "SLT_result" File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 70
+Info (12127): Elaborating entity "mips_single_cycle_datapath" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at mips_single_cycle_datapath.v(14): object "shamt" assigned a value but never read File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 14
+Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:CU" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 45
+Warning (10270): Verilog HDL Case Statement warning at control_unit.v(18): incomplete case statement has no default case item File: /home/kaz/Documents/Quartus_Projects/control_unit.v Line: 18
+Warning (10240): Verilog HDL Always Construct warning at control_unit.v(18): inferring latch(es) for variable "tempRegD", which holds its previous value in one or more paths through the always construct File: /home/kaz/Documents/Quartus_Projects/control_unit.v Line: 18
+Warning (10240): Verilog HDL Always Construct warning at control_unit.v(18): inferring latch(es) for variable "tempAlu", which holds its previous value in one or more paths through the always construct File: /home/kaz/Documents/Quartus_Projects/control_unit.v Line: 18
+Warning (10240): Verilog HDL Always Construct warning at control_unit.v(18): inferring latch(es) for variable "tempRegW", which holds its previous value in one or more paths through the always construct File: /home/kaz/Documents/Quartus_Projects/control_unit.v Line: 18
+Warning (10240): Verilog HDL Always Construct warning at control_unit.v(18): inferring latch(es) for variable "tempAluOp", which holds its previous value in one or more paths through the always construct File: /home/kaz/Documents/Quartus_Projects/control_unit.v Line: 18
+Info (10041): Inferred latch for "tempAluOp[0]" at control_unit.v(18) File: /home/kaz/Documents/Quartus_Projects/control_unit.v Line: 18
+Info (10041): Inferred latch for "tempAluOp[1]" at control_unit.v(18) File: /home/kaz/Documents/Quartus_Projects/control_unit.v Line: 18
+Info (10041): Inferred latch for "tempRegW" at control_unit.v(18) File: /home/kaz/Documents/Quartus_Projects/control_unit.v Line: 18
+Info (10041): Inferred latch for "tempAlu" at control_unit.v(18) File: /home/kaz/Documents/Quartus_Projects/control_unit.v Line: 18
+Info (10041): Inferred latch for "tempRegD" at control_unit.v(18) File: /home/kaz/Documents/Quartus_Projects/control_unit.v Line: 18
+Info (12128): Elaborating entity "mux2to1_5bit" for hierarchy "mux2to1_5bit:rt_rd_write_reg_mux" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 58
+Info (12128): Elaborating entity "mux2to1" for hierarchy "mux2to1_5bit:rt_rd_write_reg_mux|mux2to1:mux2to1_5bit[0].base_mux" File: /home/kaz/Documents/Quartus_Projects/mux2to1_5bit.v Line: 16
+Info (12128): Elaborating entity "register_file" for hierarchy "register_file:RF" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 73
+Info (12128): Elaborating entity "sign_extender" for hierarchy "sign_extender:SE" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 82
+Info (12128): Elaborating entity "para_mux2to1" for hierarchy "para_mux2to1:ALU_second_src_mux" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 90
+Info (12128): Elaborating entity "alu_control" for hierarchy "alu_control:ALU_CTRL" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 98
+Warning (10230): Verilog HDL assignment warning at alu_control.v(11): truncated value with size 4 to match size of target (1) File: /home/kaz/Documents/Quartus_Projects/alu_control.v Line: 11
+Warning (10230): Verilog HDL assignment warning at alu_control.v(13): truncated value with size 4 to match size of target (1) File: /home/kaz/Documents/Quartus_Projects/alu_control.v Line: 13
+Warning (10230): Verilog HDL assignment warning at alu_control.v(20): truncated value with size 4 to match size of target (1) File: /home/kaz/Documents/Quartus_Projects/alu_control.v Line: 20
+Warning (10230): Verilog HDL assignment warning at alu_control.v(25): truncated value with size 4 to match size of target (1) File: /home/kaz/Documents/Quartus_Projects/alu_control.v Line: 25
+Warning (10230): Verilog HDL assignment warning at alu_control.v(30): truncated value with size 4 to match size of target (1) File: /home/kaz/Documents/Quartus_Projects/alu_control.v Line: 30
+Warning (10230): Verilog HDL assignment warning at alu_control.v(35): truncated value with size 4 to match size of target (1) File: /home/kaz/Documents/Quartus_Projects/alu_control.v Line: 35
+Warning (10230): Verilog HDL assignment warning at alu_control.v(40): truncated value with size 4 to match size of target (1) File: /home/kaz/Documents/Quartus_Projects/alu_control.v Line: 40
+Warning (10230): Verilog HDL assignment warning at alu_control.v(44): truncated value with size 4 to match size of target (1) File: /home/kaz/Documents/Quartus_Projects/alu_control.v Line: 44
+Warning (10270): Verilog HDL Case Statement warning at alu_control.v(16): incomplete case statement has no default case item File: /home/kaz/Documents/Quartus_Projects/alu_control.v Line: 16
+Warning (10230): Verilog HDL assignment warning at alu_control.v(51): truncated value with size 4 to match size of target (1) File: /home/kaz/Documents/Quartus_Projects/alu_control.v Line: 51
+Warning (10240): Verilog HDL Always Construct warning at alu_control.v(10): inferring latch(es) for variable "alu_control_temp", which holds its previous value in one or more paths through the always construct File: /home/kaz/Documents/Quartus_Projects/alu_control.v Line: 10
+Info (10041): Inferred latch for "alu_control_temp" at alu_control.v(10) File: /home/kaz/Documents/Quartus_Projects/alu_control.v Line: 10
+Info (12128): Elaborating entity "alu" for hierarchy "alu:ALU" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 108
+Warning (10739): Verilog HDL warning at alu.v(12): actual bit length 32 differs from formal bit length 1 File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 12
+Warning (10739): Verilog HDL warning at alu.v(17): actual bit length 32 differs from formal bit length 1 File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 17
+Warning (10739): Verilog HDL warning at alu.v(31): actual bit length 32 differs from formal bit length 1 File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 31
+Warning (10230): Verilog HDL assignment warning at alu.v(70): truncated value with size 32 to match size of target (1) File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 70
+Warning (10034): Output port "zero" at alu.v(7) has no driver File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 7
+Info (12128): Elaborating entity "adder_32bit" for hierarchy "alu:ALU|adder_32bit:ALU_adder" File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 26
+Info (12128): Elaborating entity "full_adder" for hierarchy "alu:ALU|adder_32bit:ALU_adder|full_adder:concat_full_adder[0].generate_full_adder" File: /home/kaz/Documents/Quartus_Projects/adder.v Line: 64
+Info (12128): Elaborating entity "adder_32bit" for hierarchy "alu:ALU|adder_32bit:substractor_32bit" File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 49
+Info (12128): Elaborating entity "para_mux2to1" for hierarchy "alu:ALU|para_mux2to1:mux_L1_0" File: /home/kaz/Documents/Quartus_Projects/alu.v Line: 80
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "register_file:RF|register" is uninferred due to asynchronous read logic File: /home/kaz/Documents/Quartus_Projects/register_file.v Line: 17
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13012): Latch control_unit:CU|tempAlu has unsafe behavior File: /home/kaz/Documents/Quartus_Projects/control_unit.v Line: 18
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal instruction[26] File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+Warning (13012): Latch alu_control:ALU_CTRL|alu_control_temp has unsafe behavior File: /home/kaz/Documents/Quartus_Projects/alu_control.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal instruction[4] File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (13013): Ports ENA and PRE on the latch are fed by the same signal control_unit:CU|tempAluOp[0] File: /home/kaz/Documents/Quartus_Projects/control_unit.v Line: 18
+Warning (13012): Latch control_unit:CU|tempAluOp[0] has unsafe behavior File: /home/kaz/Documents/Quartus_Projects/control_unit.v Line: 18
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal instruction[26] File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+Warning (13012): Latch control_unit:CU|tempAluOp[1] has unsafe behavior File: /home/kaz/Documents/Quartus_Projects/control_unit.v Line: 18
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal instruction[26] File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "alu_result[1]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[2]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[3]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[4]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[5]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[6]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[7]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[8]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[9]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[10]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[11]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[12]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[13]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[14]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[15]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[16]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[17]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[18]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[19]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[20]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[21]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[22]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[23]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[24]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[25]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[26]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[27]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[28]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[29]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[30]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "alu_result[31]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 6
+    Warning (13410): Pin "write_data[0]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[1]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[2]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[3]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[4]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[5]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[6]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[7]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[8]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[9]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[10]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[11]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[12]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[13]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[14]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[15]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[16]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[17]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[18]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[19]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[20]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[21]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[22]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[23]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[24]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[25]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[26]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[27]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[28]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[29]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[30]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+    Warning (13410): Pin "write_data[31]" is stuck at GND File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 8
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 992 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file /home/kaz/Documents/Quartus_Projects/output_files/Assignment2_GTU_CSE331.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 22 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "reset" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 4
+    Warning (15610): No output dependent on input pin "instruction[6]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[7]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[8]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[9]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[10]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[11]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[12]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[13]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[14]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[15]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "clk" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 3
+    Warning (15610): No output dependent on input pin "instruction[16]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[17]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[18]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[19]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[20]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[21]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[22]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[23]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[24]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+    Warning (15610): No output dependent on input pin "instruction[25]" File: /home/kaz/Documents/Quartus_Projects/mips_single_cycle_datapath.v Line: 5
+Info (21057): Implemented 112 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 34 input pins
+    Info (21059): Implemented 64 output pins
+    Info (21061): Implemented 14 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 122 warnings
+    Info: Peak virtual memory: 531 megabytes
+    Info: Processing ended: Sat Dec  6 17:47:44 2025
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:11
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /home/kaz/Documents/Quartus_Projects/output_files/Assignment2_GTU_CSE331.map.smsg.
 
 
